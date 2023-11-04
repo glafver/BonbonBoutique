@@ -22,18 +22,8 @@ const CartPage: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <Container
-            style={{
-                backgroundColor: '#ffffff96',
-                height: '100vh',
-                padding: '20px',
-                paddingLeft: '120px',
-                paddingRight: '120px',
-                textAlign: 'center',
-                color: '#495057'
-            }}>
-
-            <Table>
+        <Container className='bk-cart-page-container'>
+            <Table >
                 <tbody>
                     {cartItems.map((item, index) => (
                         <tr key={index}>

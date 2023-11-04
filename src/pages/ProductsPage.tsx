@@ -3,7 +3,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { useProducts } from '../hooks/useProducts';
 import ProductGrid from '../components/ProductGrid';
 
-const ProductsPage = () => {
+const ProductsPage: React.FC = () => {
 
     const { error, isLoading } = useProducts();
 

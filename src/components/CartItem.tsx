@@ -66,7 +66,8 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
                             style={{
                                 backgroundColor: 'PowderBlue',
                                 borderColor: 'PowderBlue',
-                                marginRight: '16px'
+                                marginRight: '16px',
+                                marginLeft: '16px'
                             }}
                             onClick={() => handleRemoveFromCart(item.id)}
                         >

@@ -24,7 +24,7 @@ const NavbarProductSelect = () => {
 
     return (
         <>
-            <Dropdown id="bk-select" onSelect={handleSelect}>
+            <Dropdown id="bk-navbar-select" onSelect={handleSelect}>
                 <Dropdown.Toggle>{productTag ? productTag.name : "All products"}</Dropdown.Toggle>
                 <Dropdown.Menu>
                     <Dropdown.Item eventKey="">All products</Dropdown.Item>

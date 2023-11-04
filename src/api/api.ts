@@ -1,26 +1,47 @@
 import axios from 'axios';
-import { OrderDataType } from '../types/types';
+import { OrderDataType, Product, ExtandedProduct, TagType } from '../types/types';
 
-export const fetchProducts = async () => {
-    const response = await axios.get('https://www.bortakvall.se/api/v2/products');
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const userId = import.meta.env.VITE_USER_ID;
+
+const instance = axios.create({
+    baseURL: BASE_URL,
+    timeout: 10000,
+    headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+});
+
+interface ApiResponse<T> {
+    data: T;
+}
+
+const get = async <T>(endpoint: string): Promise<T> => {
+    const response = await instance.get<ApiResponse<T>>(endpoint);
     return response.data.data;
 };
 
-export const fetchProduct = async (id: number) => {
-    const response = await axios.get(`https://www.bortakvall.se/api/v2/products/${id}`);
-    return response.data.data;
+const post = async <Payload, Response = unknown>(endpoint: string, data: Payload) => {
+    const response = await instance.post<Response>(endpoint, data);
+    return response.data;
 };
 
-export const fetchTags = async () => {
-    const response = await axios.get(`https://www.bortakvall.se/api/v2/tags`);
-    return response.data.data;
+export const fetchProducts = async (): Promise<Product[]> => {
+    return get("/products");
+};
+
+export const fetchProduct = async (id: number): Promise<ExtandedProduct> => {
+    return get(`/products/${id}`);
+};
+
+export const fetchTags = async (): Promise<TagType[]> => {
+    return get("/tags");
 };
 
 export const postOrder = async (orderData: OrderDataType) => {
-    const userId = import.meta.env.VITE_USER_ID;
     try {
-        const response = await axios.post(`https://www.bortakvall.se/api/v2/users/${userId}/orders`, orderData);
-        return response.data;
+        return post<OrderDataType, { status: string, data: { id: number; }; }>(`/users/${userId}/orders`, orderData);
     } catch (error) {
         console.error('Error posting order:', error);
         throw error;

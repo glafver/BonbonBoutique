@@ -4,10 +4,6 @@ body {
   background-color: rgba(240, 240, 240, 0.2);
 }
 
-#bk-product-modal {
-  min-width: 50vw;
-}
-
 .btn {
   font-weight: 500;
   color: #495057
@@ -17,16 +13,20 @@ body {
   box-shadow: 0 6px 10px rgba(0, 0, 0, .11);
 }
 
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .bk-card-title:hover {
   color: deeppink;
 }
 
-#bk-cart-badge {
-  background-color: powderblue !important;
-  color: #495057
+#bk-product-modal {
+  min-width: 50vw;
 }
 
-#bk-select {
+#bk-navbar-select {
   margin-right: auto;
   margin-left: 50px;
 
@@ -38,6 +38,44 @@ body {
   .dropdown-item:active {
     background-color: Gainsboro;
   }
+
+  @media (max-width: 576px) {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+}
+
+.bk-navbar-logo-lg {
+  @media (max-width: 991.98px) {
+    display: none;
+  }
+}
+
+.bk-navbar-logo-sm {
+  @media (min-width: 991.98px) {
+    display: none;
+  }
+}
+
+.bk-cart-page-container {
+  background-color: #ffffff96;
+  height: 100vh;
+  padding-top: 20px;
+  text-align: center;
+  color: #495057;
+
+  .table {
+    @media (min-width: 1200px) {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+#bk-cart-badge {
+  background-color: powderblue !important;
+  color: #495057
 }
 
 #bk-order-form {
@@ -75,15 +113,4 @@ body {
   100% {
     color: deeppink;
   }
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
 }

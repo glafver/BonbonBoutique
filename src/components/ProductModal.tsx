@@ -41,21 +41,21 @@ const ProductModal: React.FC<ProductModalProps> = ({ show, handleClose, product,
                 ) : error ? (
                     <p>Error: {error.message}</p>
                 ) : data ? (
-                    <div style={{ display: 'flex' }}>
-                        <div style={{ flex: 1 }}>
-                            <div style={{ position: 'relative' }}>
-                                <img
-                                    src={`https://www.bortakvall.se${data.images.large}`}
-                                    alt={data.name}
-                                    style={{
-                                        filter: (!isAvailable)
-                                            ? 'opacity(20%)' : ''
-                                    }}
-                                />
-                                {!isAvailable && <div style={{ position: 'absolute', fontSize: '50px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>Out of stock</div>}
-                            </div>
+                    <div className="row">
+                        <div className="col-lg-6 col-md-12 col-sm-12" style={{ padding: '0', position: 'relative', display: 'flex' }}>
+                            <img
+                                src={`https://www.bortakvall.se${data.images.large}`}
+                                alt={data.name}
+                                style={{
+                                    filter: (!isAvailable)
+                                        ? 'opacity(20%)' : '',
+                                    maxWidth: '100%',
+                                    objectFit: 'contain'
+                                }}
+                            />
+                            {!isAvailable && <div style={{ position: 'absolute', fontSize: '50px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>Out of stock</div>}
                         </div>
-                        <div style={{ flex: 2, padding: '24px', backgroundColor: '#f9f7fb' }}>
+                        <div className="col-lg-6 col-md-12 col-sm-12" style={{ padding: '24px', backgroundColor: '#f9f7fb' }}>
                             <h3>{data.name}</h3>
                             <div dangerouslySetInnerHTML={{ __html: data.description }} />
                             <p style={{ fontWeight: 'bold' }}>{data.price} kr</p>
@@ -104,7 +104,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ show, handleClose, product,
                     Close
                 </Button>
             </Modal.Footer>
-        </Modal>
+        </Modal >
     );
 };
 

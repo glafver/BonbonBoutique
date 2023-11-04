@@ -3,7 +3,6 @@ import { Modal, Button } from 'react-bootstrap';
 import { OrderDataType } from '../types/types';
 import { CartItemType } from '../types/types';
 import { postOrder } from '../api/api';
-import Spinner from 'react-bootstrap/Spinner';
 import OrderForm from './OrderForm';
 import Navbar from 'react-bootstrap/Navbar';
 
@@ -117,11 +116,11 @@ const OrderModal: React.FC<OrderModalProps> = ({ showModal, handleCloseModal, ca
                         }}>
                             {result.status === 'success'
                                 ? <div style={{ textAlign: 'center' }}>
-                                    <div style={{ fontSize: '30px', marginBottom: '30px' }}>Thank you for shopping at</div>
+                                    <div style={{ fontSize: '30px', margin: '30px' }}>Thank you for shopping at</div>
                                     <Navbar.Brand
                                         style={{
                                             display: 'flex',
-                                            cursor: 'pointer'
+                                            justifyContent: 'center'
                                         }}>
                                         <img
                                             width="64"
@@ -139,7 +138,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ showModal, handleCloseModal, ca
                                             <span className="bk-color-changing"> BORTAKVÄLL</span>
                                         </div>
                                     </Navbar.Brand>
-                                    <div style={{ fontSize: '30px', marginTop: '30px' }}>Your order number is: <b>#{result.data.id}</b></div>
+                                    <div style={{ fontSize: '30px', margin: '30px' }}>Your order number is: <b>#{result.data.id}</b></div>
                                 </div>
                                 : <div style={{ fontSize: '30px' }}>Something went wrong!!!</div>}
                         </div>
