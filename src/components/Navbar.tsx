@@ -53,8 +53,8 @@ const NavbarComponent: React.FC = () => {
                             fontSize: '50px',
                             color: 'deeppink'
                         }}>
-                            <span className="bk-color-changing bk-navbar-logo-lg">BORTAKVÄLL</span>
-                            <span className="bk-color-changing bk-navbar-logo-sm">BK</span>
+                            <span className="bk-color-changing bk-navbar-logo-lg">BonbonBoutique</span>
+                            <span className="bk-color-changing bk-navbar-logo-sm">BB</span>
                         </div>
                     </Navbar.Brand>
                     <NavbarProductSelect />

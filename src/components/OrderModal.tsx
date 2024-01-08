@@ -135,7 +135,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ showModal, handleCloseModal, ca
                                             fontSize: '50px',
                                             color: 'deeppink'
                                         }}>
-                                            <span className="bk-color-changing"> BORTAKVÄLL</span>
+                                            <span className="bk-color-changing"> BonbonBoutique</span>
                                         </div>
                                     </Navbar.Brand>
                                     <div style={{ fontSize: '30px', margin: '30px' }}>Your order number is: <b>#{result.data.id}</b></div>
