@@ -1,8 +1,6 @@
 # BonBon Boutique
 
-Welcome to the BonBon Boutique, a delightful candy shop website designed to sweeten your day!
-
-https://bonbonboutique.netlify.app/
+Welcome to the [BonbonBoutique](https://bonbonboutique.netlify.app/), a delightful candy shop website designed to sweeten your day!
 
 ## Description
 
