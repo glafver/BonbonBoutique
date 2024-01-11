@@ -1,0 +1,68 @@
+@import './variables';
+
+body {
+    font-family: Montserrat;
+    color: #495057 !important;
+    // background-image: url('https://kartinki.pics/pics/uploads/posts/2022-08/1659591658_6-kartinkin-net-p-tekstura-marshmellou-krasivo-7.jpg');
+    // background-color: $secondary-color;
+}
+
+button {
+    border: none !important
+}
+
+.card {
+    border: none;
+}
+
+.form-control {
+    border: none !important;
+
+    &:focus {
+        box-shadow: none !important;
+    }
+}
+
+.btn {
+    font-weight: 500;
+}
+
+.btn:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .11);
+}
+
+.shop-icon {
+    cursor: pointer;
+    color: $primary-color;
+
+    &:hover {
+        color: $accent-color;
+    }
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#bk-product-modal {
+    min-width: 50vw;
+}
+
+#bk-navbar-select {
+    margin-right: auto;
+
+    .btn {
+        background-color: $accent-color !important;
+        border-color: $accent-color !important;
+    }
+
+    .dropdown-item:active {
+        background-color: Gainsboro;
+    }
+
+    @media (max-width: 576px) {
+        margin-left: auto;
+        margin-right: 20px;
+    }
+}

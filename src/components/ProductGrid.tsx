@@ -11,7 +11,7 @@ const ProductGrid: React.FC = () => {
     const { filteredProducts } = useProducts();
 
     return (
-        <Container style={{
+        <Container id='products-page' style={{
             padding: '0',
             paddingTop: '20px'
         }}>

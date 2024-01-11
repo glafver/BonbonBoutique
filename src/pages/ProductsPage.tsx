@@ -9,7 +9,7 @@ const ProductsPage: React.FC = () => {
 
     if (isLoading) {
         return (
-            <Container
+            <Container id='products-page'
                 style={{
                     display: 'flex',
                     justifyContent: 'center',

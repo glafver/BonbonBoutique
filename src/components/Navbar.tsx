@@ -1,26 +1,15 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
 import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { Cart4 } from 'react-bootstrap-icons';
-import Badge from 'react-bootstrap/Badge';
-import NavbarProductSelect from './NavbarProductSelect';
-import { useCart } from '../hooks/useCart';
 import { useProducts } from '../hooks/useProducts';
-import { ArrowUpCircleFill } from 'react-bootstrap-icons';
+import { IoArrowUpCircle } from "react-icons/io5";
+import SubMenu from './SubMenu';
+import CartIcon from './CartIcon';
 
 const NavbarComponent: React.FC = () => {
-
-    const { badge } = useCart();
-    const { resetProductsFilter } = useProducts();
-
     const navigate = useNavigate();
-
-    const handleGoToCart = () => {
-        resetProductsFilter();
-        navigate('/cart');
-    };
+    const { resetProductsFilter } = useProducts();
 
     const handleGoToHome = () => {
         resetProductsFilter();
@@ -29,10 +18,7 @@ const NavbarComponent: React.FC = () => {
 
     return (
         <>
-            <Navbar expand="lg" id='nav'
-                style={{
-                    backgroundColor: 'LightGoldenrodYellow'
-                }}>
+            <Navbar expand="lg" id='nav'>
                 <Container>
                     <Navbar.Brand
                         onClick={handleGoToHome}
@@ -40,41 +26,30 @@ const NavbarComponent: React.FC = () => {
                             display: 'flex',
                             cursor: 'pointer'
                         }}>
-                        <img
+                        {/* <img
                             width="64"
                             height="64"
                             src="https://img.icons8.com/arcade/64/sweets.png"
                             alt="sweets"
                             style={{
                                 marginRight: '10px'
-                            }} />
-                        <div style={{
-                            fontFamily: "'Modak', sans-serif",
-                            fontSize: '50px',
-                            color: 'deeppink'
-                        }}>
-                            <span className="bk-color-changing bk-navbar-logo-lg">BonbonBoutique</span>
-                            <span className="bk-color-changing bk-navbar-logo-sm">BB</span>
+                            }} /> */}
+                        <div>
+                            <span className="logo logo-lg">BonbonBoutique</span>
+                            <span className="logo logo-sm">BB</span>
                         </div>
                     </Navbar.Brand>
-                    <NavbarProductSelect />
-                    <Button
-                        onClick={handleGoToCart}
-                        variant="light"
-                        style={{
-                            backgroundColor: 'pink',
-                            borderColor: 'pink',
-                            position: 'relative',
-                            marginRight: '6px'
-                        }}>
-                        <Cart4 style={{ fontSize: '25px', color: '#495057' }} />
-                        {badge ? <Badge id='bk-cart-badge' style={{ position: 'absolute', top: '-12px', right: '-12px' }}>{badge}</Badge> : null}
-                    </Button>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <div style={{ fontSize: '28px', lineHeight: '38px' }}>+46760558355</div>
+                        <CartIcon />
+                    </div>
+
                 </Container>
             </Navbar>
+            <SubMenu />
             <a href='#nav'>
-                <ArrowUpCircleFill
-                    className='bk-color-changing'
+                <IoArrowUpCircle
+                    className='bk-primary-color'
                     style={{
                         position: 'fixed',
                         bottom: '20px',

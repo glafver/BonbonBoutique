@@ -1,0 +1,26 @@
+.bk-cart-page-container {
+    background-color: #ffffff96;
+    height: 100vh;
+    padding-top: 20px;
+    text-align: center;
+    color: #495057;
+
+    .table {
+        @media (min-width: 1200px) {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+#bk-order-form {
+    input:focus {
+        border-color: gray;
+        box-shadow: none;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+}

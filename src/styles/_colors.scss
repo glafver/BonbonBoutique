@@ -1,0 +1,41 @@
+.bk-primary-bg {
+    background-color: $primary-color;
+}
+
+.bk-secondary-bg {
+    background-color: $secondary-color;
+}
+
+.bk-primary-color {
+    color: $primary-color;
+}
+
+.bk-secondary-color {
+    color: $secondary-color !important;
+}
+
+.bk-color-changing {
+    animation: changeColor 10s linear infinite;
+}
+
+@keyframes changeColor {
+    0% {
+        color: pink;
+    }
+
+    25% {
+        color: $primary-color;
+    }
+
+    50% {
+        color: $accent-color(140, 240, 140);
+    }
+
+    75% {
+        color: $primary-color(224, 150, 253);
+    }
+
+    100% {
+        color: pink;
+    }
+}

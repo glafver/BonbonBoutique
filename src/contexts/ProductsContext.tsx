@@ -11,6 +11,7 @@ type ProductsContextType = {
     filterProducts: (id: number, name: string) => void;
     resetProductsFilter: () => void;
     isProductAvialiable: (id: number) => boolean;
+    newProducts: Product[];
 };
 
 type ProductsProviderProps = {
@@ -34,6 +35,15 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
         );
         setFilteredProducts(filtered);
     };
+
+    const getNewProducts = () => {
+        const filtered = products.filter((product) =>
+            product.tags.find(tag => tag.id === 124)
+        );
+        return filtered;
+    };
+
+    const newProducts = getNewProducts();
 
     const resetProductsFilter = () => {
         setFilteredProducts(products);
@@ -62,7 +72,7 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
     }, [data]);
 
     return (
-        <ProductsContext.Provider value={{ filteredProducts, productTag, error, isLoading, filterProducts, resetProductsFilter, isProductAvialiable }}>
+        <ProductsContext.Provider value={{ filteredProducts, productTag, error, isLoading, filterProducts, resetProductsFilter, isProductAvialiable, newProducts }}>
             {children}
         </ProductsContext.Provider>
     );

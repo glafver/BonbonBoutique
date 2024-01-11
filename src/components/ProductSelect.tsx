@@ -4,7 +4,7 @@ import { TagType } from '../types/types';
 import { useQuery } from 'react-query';
 import { useProducts } from '../hooks/useProducts';
 
-const NavbarProductSelect = () => {
+const ProductSelect = () => {
     const { filterProducts, productTag, resetProductsFilter } = useProducts();
 
     const { data: tags } = useQuery<TagType[], Error>('tags', fetchTags);
@@ -50,4 +50,4 @@ const NavbarProductSelect = () => {
 
 };
 
-export default NavbarProductSelect;
+export default ProductSelect;

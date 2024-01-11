@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.scss';
+import '../src/styles/index.scss';
 import { CartProvider } from './contexts/CartContext.tsx';
 import { ProductsProvider } from './contexts/ProductsContext.tsx';
 
