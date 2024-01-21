@@ -1,14 +1,13 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
 import { Product } from '../types/types';
-import { CartItemType } from '../types/types';
+import { useProducts } from '../hooks/useProducts';
 
 type CartContextType = {
-    addToCart: (product: Product) => void;
-    addOneToCart: (productId: number) => void;
-    removeFromCart: (productId: number) => void;
-    removeOneFromCart: (productId: number) => void;
+    addToCart: (productId: number, quantity: number) => void;
+    removeFromCart: (productId: number, quantity?: number) => void;
     badge: number;
-    cartItems: CartItemType[];
+    cart: { id: number, quantity: number; }[] | [];
+    cartItems: Product[];
 };
 
 type CartProviderProps = {
@@ -18,60 +17,61 @@ type CartProviderProps = {
 export const CartContext = createContext<CartContextType | null>(null);
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
+    const { products } = useProducts();
+
     const [badge, setBadge] = useState<number>(0);
-    const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+    const [cart, setCart] = useState<{ id: number, quantity: number; }[] | []>([]);
 
-    const addToCart = (product: Product) => {
+    const addToCart = (productId: number, quantity: number = 1) => {
         const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        const productIndex = cart.findIndex((item: { id: number; }) => item.id === product.id);
+        const productIndex = cart.findIndex((item: { id: number; }) => item.id === productId);
 
         if (productIndex !== -1) {
-            cart[productIndex].quantity = (cart[productIndex].quantity || 1) + 1;
+            cart[productIndex].quantity += quantity;
         } else {
-            cart.push({ id: product.id, quantity: 1, img: product.images.thumbnail, name: product.name, price: product.price });
+            cart.push({ id: productId, quantity: quantity });
         }
-        localStorage.setItem('cart', JSON.stringify(cart));
-        window.dispatchEvent(new Event('storage'));
-    };
-
-    const addOneToCart = (productId: number) => {
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        const productIndex = cart.findIndex((item: { id: number; }) => item.id === productId);
-
-        cart[productIndex].quantity++;
 
         localStorage.setItem('cart', JSON.stringify(cart));
 
         window.dispatchEvent(new Event('storage'));
     };
 
-    const removeFromCart = (productId: number) => {
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        const updatedCart = cart.filter((item: { id: number; }) => item.id !== productId);
-        localStorage.setItem('cart', JSON.stringify(updatedCart));
-        setCartItems(updatedCart);
-        window.dispatchEvent(new Event('storage'));
-    };
-
-    const removeOneFromCart = (productId: number) => {
+    const removeFromCart = (productId: number, quantity?: number) => {
         const cart = JSON.parse(localStorage.getItem('cart') || '[]');
         const productIndex = cart.findIndex((item: { id: number; }) => item.id === productId);
 
-        if (productIndex !== -1) {
-            const updatedCart = [...cart];
+        if (quantity) {
+            if (productIndex !== -1) {
+                const updatedCart = [...cart];
 
-            if (updatedCart[productIndex].quantity > 1) {
-                updatedCart[productIndex].quantity--;
-            } else {
-                updatedCart.splice(productIndex, 1);
+                if (updatedCart[productIndex].quantity > 1) {
+                    updatedCart[productIndex].quantity--;
+                } else {
+                    updatedCart.splice(productIndex, 1);
+                }
+
+                localStorage.setItem('cart', JSON.stringify(updatedCart));
+                setCart(updatedCart);
+
+                window.dispatchEvent(new Event('storage'));
             }
-
+        } else {
+            const updatedCart = cart.filter((item: { id: number; }) => item.id !== productId);
             localStorage.setItem('cart', JSON.stringify(updatedCart));
-            setCartItems(updatedCart);
-
+            setCart(updatedCart);
             window.dispatchEvent(new Event('storage'));
         }
     };
+
+    const filterProductsById = (ids: Array<{ id: number; quantity: number; }>) => {
+        return products.map((product: Product) => {
+            const matchedItem = ids.find((item) => item.id === product.id);
+            return matchedItem ? { ...product, quantity: matchedItem.quantity } : product;
+        }).filter((product: Product) => ids.some((item) => item.id === product.id));
+    };
+
+    const cartItems = filterProductsById(cart);
 
     useEffect(() => {
         const updateCartFromStorage = () => {
@@ -80,7 +80,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
                 const parsedCart = JSON.parse(cart);
                 const totalQuantity = parsedCart.reduce((total: number, item: { quantity: number; }) => total + item.quantity, 0);
                 setBadge(totalQuantity);
-                setCartItems(parsedCart);
+                setCart(parsedCart);
             }
         };
 
@@ -94,7 +94,14 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }, []);
 
     return (
-        <CartContext.Provider value={{ addToCart, addOneToCart, removeFromCart, removeOneFromCart, badge, cartItems }}>
+        <CartContext.Provider
+            value={{
+                addToCart,
+                removeFromCart,
+                badge,
+                cart,
+                cartItems
+            }}>
             {children}
         </CartContext.Provider>
     );

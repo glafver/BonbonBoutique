@@ -1,20 +1,24 @@
-.bk-primary-bg {
+.primary-bg {
     background-color: $primary-color;
 }
 
-.bk-secondary-bg {
+.secondary-bg {
     background-color: $secondary-color;
 }
 
-.bk-primary-color {
+.bg-bg {
+    background-color: $background-color;
+}
+
+.primary-color {
     color: $primary-color;
 }
 
-.bk-secondary-color {
+.secondary-color {
     color: $secondary-color !important;
 }
 
-.bk-color-changing {
+.changing-color {
     animation: changeColor 10s linear infinite;
 }
 

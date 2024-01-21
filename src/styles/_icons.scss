@@ -1,0 +1,57 @@
+.shop-icon {
+    color: $primary-color;
+
+    &:hover {
+        color: $accent-color;
+    }
+}
+
+.icon-btn {
+    cursor: pointer;
+}
+
+#cart-icon {
+    font-size: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#fav-icon {
+    font-size: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#cart-badge {
+    background-color: $accent-color !important;
+    position: absolute;
+    top: -14px;
+    right: 0;
+}
+
+#fav-badge {
+    background-color: $accent-color !important;
+    position: absolute;
+    top: -14px;
+    right: 0;
+}
+
+.card-fav-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: $primary-color;
+
+    &:hover {
+        color: $accent-color;
+    }
+}
+
+.rating-icon {
+    color: $background-color;
+    margin: 0 0 5px 0;
+}
+
+.rating-icon-filled {
+    color: $secondary-accent-color;
+}

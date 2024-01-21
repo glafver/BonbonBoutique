@@ -2,6 +2,10 @@
     #hero-section {
         background-color: $secondary-color;
         padding: 0px 60px;
+
+        .btn {
+            background-color: $accent-color !important;
+        }
     }
 
     #benefits-section {
@@ -15,7 +19,7 @@
             .benefit-circle {
                 width: 38px;
                 height: 38px;
-                background-color: $accent-color;
+                background-color: $secondary-accent-color;
                 position: absolute;
                 z-index: -1;
                 left: -10px;
@@ -36,6 +40,7 @@
             top: 50%;
             transform: translateY(-50%);
             background-color: $primary-color;
+            color: white !important;
         }
 
         .pagination-dots-container {
@@ -56,6 +61,26 @@
 
         .dot.active {
             background-color: $primary-color;
+        }
+    }
+
+    #brands-wrapper {
+        margin: 80px 0px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+
+        img {
+            height: 40px;
+        }
+    }
+
+    #subscribe-section {
+        background-color: $background-color;
+
+        .btn {
+            background-color: $accent-color !important;
         }
     }
 }

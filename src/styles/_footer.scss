@@ -1,0 +1,30 @@
+#footer {
+    background-color: $secondary-color;
+    // color: white !important;
+
+    a {
+        // color: white !important;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .logo {
+        font-family: 'Modak', sans-serif;
+        font-size: 50px;
+        color: $primary-color;
+    }
+
+    .logo-lg {
+        @media (max-width: 991.98px) {
+            display: none;
+        }
+    }
+
+    .logo-sm {
+        @media (min-width: 991.98px) {
+            display: none;
+        }
+    }
+}

@@ -2,13 +2,27 @@
 
 body {
     font-family: Montserrat;
-    color: #495057 !important;
-    // background-image: url('https://kartinki.pics/pics/uploads/posts/2022-08/1659591658_6-kartinkin-net-p-tekstura-marshmellou-krasivo-7.jpg');
-    // background-color: $secondary-color;
+    color: $text-color !important;
+}
+
+*:focus {
+    box-shadow: none !important;
+    border-color: #dee2e6 !important;
 }
 
 button {
-    border: none !important
+    border: none !important;
+    background-color: $primary-color !important;
+    color: white !important;
+}
+
+a {
+    text-decoration: none;
+    color: $text-color;
+}
+
+.btn:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .11);
 }
 
 .card {
@@ -23,46 +37,23 @@ button {
     }
 }
 
-.btn {
-    font-weight: 500;
-}
-
-.btn:hover {
-    box-shadow: 0 6px 10px rgba(0, 0, 0, .11);
-}
-
-.shop-icon {
-    cursor: pointer;
-    color: $primary-color;
-
-    &:hover {
-        color: $accent-color;
-    }
-}
-
 .row {
     margin-left: 0;
     margin-right: 0;
 }
 
-#bk-product-modal {
-    min-width: 50vw;
+.loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: $primary-color;
 }
 
-#bk-navbar-select {
-    margin-right: auto;
+.Toastify__close-button {
+    background-color: transparent !important;
+    color: $text-color !important;
+}
 
-    .btn {
-        background-color: $accent-color !important;
-        border-color: $accent-color !important;
-    }
-
-    .dropdown-item:active {
-        background-color: Gainsboro;
-    }
-
-    @media (max-width: 576px) {
-        margin-left: auto;
-        margin-right: 20px;
-    }
+.Toastify__progress-bar {
+    background: linear-gradient(45deg, #4D9DE0, #E15554, #E1BC29);
 }

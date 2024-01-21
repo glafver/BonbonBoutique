@@ -1,7 +1,6 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { OrderDataType } from '../types/types';
-import { CartItemType } from '../types/types';
+import { OrderDataType, Product } from '../types/types';
 import { postOrder } from '../api/api';
 import OrderForm from './OrderForm';
 import Navbar from 'react-bootstrap/Navbar';
@@ -9,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 interface OrderModalProps {
     showModal: boolean;
     handleCloseModal: () => void;
-    cartItems: CartItemType[];
+    cartItems: Product[];
 }
 
 type InputChangeEvent = ChangeEvent<HTMLInputElement>;
@@ -52,11 +51,11 @@ const OrderModal: React.FC<OrderModalProps> = ({ showModal, handleCloseModal, ca
 
         formData.order_items = cartItems.map((item) => ({
             product_id: item.id,
-            qty: item.quantity,
+            qty: item.quantity ? item.quantity : 1,
             item_price: item.price,
-            item_total: item.quantity * item.price,
+            item_total: (item.quantity ? item.quantity : 1) * item.price,
         }));
-        formData.order_total = cartItems.reduce((total, item) => total + item.quantity * item.price, 0);
+        formData.order_total = cartItems.reduce((total, item) => total + (item.quantity ? item.quantity : 1) * item.price, 0);
         setIsPostingOrder(true);
         const result = await postOrder(formData);
         if (result.status === 'success') {

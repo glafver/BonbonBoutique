@@ -9,20 +9,17 @@ const ProductsPage: React.FC = () => {
 
     if (isLoading) {
         return (
-            <Container id='products-page'
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    position: 'relative',
-                    height: '90vh'
-                }}>
-                <Spinner
+            <Container id='products-page' className='my-5'>
+                <Container id='products-page'
+                    className='my-5 pt-4 rounded bg-bg'
                     style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        color: 'deeppink'
-                    }} />
+                        display: 'flex',
+                        justifyContent: 'center',
+                        position: 'relative',
+                        height: '90vh'
+                    }}>
+                    <Spinner className='loading-spinner' />
+                </Container>
             </Container>
         );
     }
@@ -34,7 +31,9 @@ const ProductsPage: React.FC = () => {
     }
 
     return (
-        <ProductGrid />
+        <Container id='products-page' className='my-5'>
+            <ProductGrid />
+        </Container>
     );
 };
 
