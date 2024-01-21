@@ -38,4 +38,8 @@ export type OrderDataType = {
         item_total: number;
     }>;
     order_total?: number;
+    card_number?: string;
+    cvc?: string;
+    due_date?: string;
+    name_on_card?: string;
 };

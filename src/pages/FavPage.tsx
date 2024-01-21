@@ -6,6 +6,7 @@ import boy_happy from '../assets/boy_happy.png';
 import { useFav } from '../hooks/useFav';
 import { Fade, Slide } from "react-awesome-reveal";
 import { useNavigate } from 'react-router-dom';
+import { AttentionSeeker } from 'react-awesome-reveal';
 
 const FavPage: React.FC = () => {
     const { favItems } = useFav();
@@ -40,24 +41,26 @@ const FavPage: React.FC = () => {
                         <Col md={12} style={{ padding: '0' }}>
                             <Row className="row-appear">
                                 {favItems?.length === 0 ?
-                                    <div className='d-flex flex-column justify-content-center align-items-center'>
+                                    <div className='d-flex flex-column justify-content-center align-items-center mb-4'>
                                         <div className='text-center mb-4'>Du har inga favoritprodukter än.
                                         </div>
-                                        <Button
-                                            style={{
-                                                backgroundColor: 'deeppink',
-                                                borderColor: 'deeppink',
-                                                color: 'white'
-                                            }}
-                                            onClick={() => { window.scrollTo(0, 0); navigate('/products'); }}
-                                        >
-                                            Go shopping!
-                                        </Button>
+                                        <AttentionSeeker effect="swing" >
+                                            <Button
+                                                style={{
+                                                    backgroundColor: 'deeppink',
+                                                    borderColor: 'deeppink',
+                                                    color: 'white'
+                                                }}
+                                                onClick={() => { window.scrollTo(0, 0); navigate('/products'); }}
+                                            >
+                                                Handla nu!
+                                            </Button>
+                                        </AttentionSeeker>
                                     </div>
                                     :
                                     favItems.map((product: Product) => (
                                         <Col key={product.id} xs={12} md={4} lg={3} style={{ marginBottom: '20px' }}>
-                                            <Fade triggerOnce><ProductCard product={product} /></Fade>
+                                            <ProductCard product={product} />
                                         </Col>
                                     ))
                                 }

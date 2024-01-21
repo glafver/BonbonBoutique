@@ -18,12 +18,12 @@ import { useFav } from '../hooks/useFav';
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
 import { BsHeart, BsFillHeartFill } from "react-icons/bs";
 import { toast } from 'react-toastify';
+import { Fade } from "react-awesome-reveal";
 
 interface ProductModalProps {
     show: boolean;
     handleClose: () => void;
     product: Product;
-    handleAddToCart: (product: Product) => void;
 }
 
 const ProductModal: React.FC<ProductModalProps> = ({ show, handleClose, product }) => {
@@ -89,26 +89,28 @@ const ProductModal: React.FC<ProductModalProps> = ({ show, handleClose, product 
                 ) : data ? (
                     <Row >
                         <Col lg={5} md={12} sm={12} >
-                            <div className='modal-img p-4 rounded position-relative'>
-                                <Image
-                                    src={`https://www.bortakvall.se${data.images.large}`}
-                                    alt={data.name}
-                                    style={{
-                                        filter: !isProductAvailable(product.id)
-                                            ? 'opacity(20%)' : '',
-                                        maxWidth: '100%',
-                                        objectFit: 'contain'
-                                    }}
-                                    fluid
-                                />
-                                {!isProductAvailable(product.id) &&
-                                    <div className='out-of-stock'>
-                                        Out of stock
-                                    </div>
-                                }
-                                {product.tags.find(tag => tag.id === 124) ? <img width="40" height="40" src="https://img.icons8.com/parakeet/96/new.png" alt="new" style={{ position: 'absolute', left: '5px', top: '5px' }} /> : null}
-                                {isProductFav(product.id) ? <BsFillHeartFill onClick={() => handleRemoveFav(product.id)} className='icon-btn card-fav-icon' /> : <BsHeart onClick={() => handleAddFav(product.id)} className='icon-btn card-fav-icon' />}
-                            </div>
+                            <Fade triggerOnce>
+                                <div className='modal-img p-4 rounded position-relative'>
+                                    <Image
+                                        src={`https://www.bortakvall.se${data.images.large}`}
+                                        alt={data.name}
+                                        style={{
+                                            filter: !isProductAvailable(product.id)
+                                                ? 'opacity(20%)' : '',
+                                            maxWidth: '100%',
+                                            objectFit: 'contain'
+                                        }}
+                                        fluid
+                                    />
+                                    {!isProductAvailable(product.id) &&
+                                        <div className='out-of-stock'>
+                                            Out of stock
+                                        </div>
+                                    }
+                                    {product.tags.find(tag => tag.id === 124) ? <img width="40" height="40" src="https://img.icons8.com/parakeet/96/new.png" alt="new" style={{ position: 'absolute', left: '5px', top: '5px' }} /> : null}
+                                    {isProductFav(product.id) ? <BsFillHeartFill onClick={() => handleRemoveFav(product.id)} className='icon-btn card-fav-icon' /> : <BsHeart onClick={() => handleAddFav(product.id)} className='icon-btn card-fav-icon' />}
+                                </div>
+                            </Fade>
                         </Col>
                         <Col lg={7} md={12} sm={12} >
                             <div className='modal-text p-4 rounded'>

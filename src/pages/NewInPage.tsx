@@ -38,7 +38,7 @@ const NewInPage: FC = () => {
                             <Row className="row-appear">
                                 {newProducts.map((product: Product) => (
                                     <Col key={product.id} xs={12} md={4} lg={3} style={{ marginBottom: '20px' }}>
-                                        <Fade triggerOnce><ProductCard product={product} /></Fade>
+                                        <ProductCard product={product} />
                                     </Col>
                                 ))}
                             </Row>

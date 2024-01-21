@@ -1,9 +1,9 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { OrderDataType, Product } from '../types/types';
 import { postOrder } from '../api/api';
 import OrderForm from './OrderForm';
-import Navbar from 'react-bootstrap/Navbar';
+import { IoCloseOutline } from "react-icons/io5";
 
 interface OrderModalProps {
     showModal: boolean;
@@ -17,13 +17,17 @@ type FormSubmitEvent = FormEvent<HTMLFormElement>;
 
 const OrderModal: React.FC<OrderModalProps> = ({ showModal, handleCloseModal, cartItems }) => {
     const [formData, setFormData] = useState<OrderDataType>({
-        customer_first_name: '',
-        customer_last_name: '',
-        customer_address: '',
-        customer_postcode: '',
-        customer_city: '',
-        customer_email: '',
-        customer_phone: ''
+        customer_first_name: 'test',
+        customer_last_name: 'test',
+        customer_address: 'test',
+        customer_postcode: 'test',
+        customer_city: 'test',
+        customer_email: 'test@test.test',
+        customer_phone: '123456789',
+        card_number: '1111222233334444',
+        name_on_card: 'test',
+        due_date: '11/22',
+        cvc: '123'
     });
 
     const [result, setResult] = useState<{ status: string, data: { id: number; }; } | null>(null);
@@ -73,96 +77,51 @@ const OrderModal: React.FC<OrderModalProps> = ({ showModal, handleCloseModal, ca
     };
 
     return (
-        <Modal show={showModal} onHide={() => {
-            resetResult();
-            handleCloseModal();
-        }}>
-            <Modal.Header closeButton
-                style={{
-                    backgroundColor: 'LightGoldenrodYellow'
-                }}>
-                <Modal.Title></Modal.Title>
-            </Modal.Header>
-
-            {isPostingOrder ?
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    background: 'rgba(255, 255, 255, 0.7)',
-                }}>
-                </div>
-                : null}
-
-            {result ?
-                (<>
-                    <Modal.Body style={{ minHeight: '626px' }}>
-                        <div style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
-                            background: 'rgba(255, 255, 255, 0.7)',
-                        }}>
-                            {result.status === 'success'
-                                ? <div style={{ textAlign: 'center' }}>
-                                    <div style={{ fontSize: '30px', margin: '30px' }}>Thank you for shopping at</div>
-                                    <Navbar.Brand
-                                        style={{
-                                            display: 'flex',
-                                            justifyContent: 'center'
-                                        }}>
-                                        <img
-                                            width="64"
-                                            height="64"
-                                            src="https://img.icons8.com/arcade/64/sweets.png"
-                                            alt="sweets"
-                                            style={{
-                                                marginRight: '10px'
-                                            }} />
-                                        <div style={{
-                                            fontFamily: "'Modak', sans-serif",
-                                            fontSize: '50px',
-                                            color: 'deeppink'
-                                        }}>
-                                            <span className="bk-color-changing"> BonbonBoutique</span>
-                                        </div>
-                                    </Navbar.Brand>
-                                    <div style={{ fontSize: '30px', margin: '30px' }}>Your order number is: <b>#{result.data.id}</b></div>
+        <Modal show={showModal} id='order-modal'
+            onHide={() => {
+                resetResult();
+                handleCloseModal();
+            }}>
+            <Modal.Body className='rounded'>
+                <IoCloseOutline className='icon-btn close position-absolute' onClick={handleCloseModal} />
+                {result ?
+                    <div className='result-modal'>
+                        {result.status === 'success' ?
+                            <div>
+                                <div>Tack för att du handlar hos</div>
+                                <div className='order-brand mb-5'>
+                                    <span> BonbonBoutique</span>
                                 </div>
-                                : <div style={{ fontSize: '30px' }}>Something went wrong!!!</div>}
-                        </div>
-                    </Modal.Body>
-                    <Modal.Footer
-                        style={{
-                            backgroundColor: 'LightGoldenrodYellow'
-                        }}>
-                        <Button variant="light"
-                            style={{
-                                backgroundColor: 'pink',
-                                borderColor: 'pink'
-                            }} onClick={handleCloseModal}>
-                            Close
-                        </Button>
-                    </Modal.Footer>
-                </>)
-                :
-                (<OrderForm
-                    handleFormChange={handleFormChange}
-                    handleFormSubmit={handleFormSubmit}
-                    formData={formData}
-                />)
-            }
-        </Modal>
+                                <div className='mb-5'>Ditt ordernummer är: <b>#{result.data.id}</b></div>
+                                <div >Du kommer att få orderinformation via e-post</div>
+                            </div>
+                            : <div>Något gick fel!!!</div>}
+                    </div>
+                    :
+                    <OrderForm
+                        handleFormChange={handleFormChange}
+                        handleFormSubmit={handleFormSubmit}
+                        formData={formData}
+                    />
+                }
+
+                {isPostingOrder ?
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        background: 'rgba(255, 255, 255, 0.7)',
+                    }}>
+                    </div>
+                    : null
+                }
+            </Modal.Body >
+        </Modal >
     );
 };
 

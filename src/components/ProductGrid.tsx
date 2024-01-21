@@ -7,7 +7,6 @@ import { Product } from '../types/types';
 import Col from 'react-bootstrap/Col';
 import { useProducts } from '../hooks/useProducts';
 import ProductsFilter from './ProductsFilter';
-import { Fade } from "react-awesome-reveal";
 
 const ProductGrid: React.FC = () => {
 
@@ -53,9 +52,7 @@ const ProductGrid: React.FC = () => {
                         {filteredProducts.map((product: Product) => (
 
                             <Col key={product.id} xs={12} md={4} lg={3} style={{ marginBottom: '20px' }}>
-                                <Fade triggerOnce>
-                                    <ProductCard product={product} />
-                                </Fade>
+                                <ProductCard product={product} />
                             </Col>
 
                         ))}

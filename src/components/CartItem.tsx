@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsTrash } from "react-icons/bs";
-import { Button } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import { Product } from '../types/types';
 import { useCart } from '../hooks/useCart';
 import { useProducts } from '../hooks/useProducts';
+import { IoIosAdd, IoIosRemove } from "react-icons/io";
+import ProductModal from './ProductModal';
 
 interface CartItemProps {
     item: Product;
 }
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
+    const [showModal, setShowModal] = useState(false);
+
+    const handleOpenModal = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
 
     const { addToCart, removeFromCart } = useCart();
     const { isProductAvailable } = useProducts();
@@ -30,42 +41,50 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
 
     return (
         <>
-            <td style={{ verticalAlign: 'middle' }}>
+            <Col xs={2}>
                 <img
                     src={`https://www.bortakvall.se${item.images.thumbnail}`}
                     alt={item.name}
                     style={{ width: '50px' }}
                 />
-            </td>
-            <td style={{ fontWeight: 'bold', verticalAlign: 'middle', color: '#495057' }}>
-                <div>{item.name}</div>
-            </td>
-            <td style={{ verticalAlign: 'middle' }}>
+            </Col>
+            <Col xs={3} style={{ fontWeight: 'bold', color: '#495057' }}>
+                <div onClick={handleOpenModal} className='product-name'>{item.name}</div>
+            </Col>
+            <Col xs={3}>
                 <div style={{
                     display: 'flex',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
                 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', minWidth: '120px', width: '30%', color: '#495057' }}>
-                        <Button variant="outline-secondary" onClick={() => handleRemoveOneFromCart(item.id)}>-</Button>
-                        <span style={{ fontWeight: 'bold' }}> {item.quantity}</span>
-                        <Button disabled={!isProductAvailable(item.id, 1)} variant="outline-secondary" onClick={() => handleAddOneToCart(item.id)}>+</Button>
-                    </div>
-                    <div>
-                        <Button
-                            variant="light"
+                    <BsTrash className='cart-remove-icon' onClick={() => handleRemoveFromCart(item.id)} />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100px' }}>
+                        <IoIosRemove className='icon-btn'
+                            onMouseDown={(e: React.MouseEvent) => e.preventDefault()}
+                            onClick={() => handleRemoveOneFromCart(item.id)}
+                        />
+                        <span style={{ fontWeight: 'bold' }}>{item.quantity}</span>
+                        <IoIosAdd
+                            className='icon-btn'
                             style={{
-                                backgroundColor: 'PowderBlue',
-                                borderColor: 'PowderBlue',
-                                marginRight: '16px',
-                                marginLeft: '16px'
+                                color: !isProductAvailable(item.id, 1) && 'lightgrey',
+                                cursor: !isProductAvailable(item.id, 1) && 'none',
+                                pointerEvents: !isProductAvailable(item.id, 1) && 'none'
                             }}
-                            onClick={() => handleRemoveFromCart(item.id)}
-                        >
-                            <BsTrash style={{ fontSize: '20px', color: '#495057' }} />
-                        </Button>
+                            onMouseDown={(e: React.MouseEvent) => e.preventDefault()}
+                            onClick={() => handleAddOneToCart(item.id)}
+                        />
                     </div>
                 </div>
-            </td></>
+            </Col>
+            <Col xs={2}>
+                <div style={{ fontSize: '12px' }}><b> {item.price} kr</b> /  * {100} g  </div>
+            </Col>
+            <Col xs={2} style={{ fontWeight: 'bolder' }}>
+                <div>{item.price * (item.quantity || 1)} kr</div>
+            </Col>
+            <ProductModal show={showModal} handleClose={handleCloseModal} product={item} />
+        </>
     );
 };
 
