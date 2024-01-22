@@ -46,7 +46,7 @@ const ProductGrid: React.FC = () => {
                     </div>
                 </Col>
                 <Col md={9} style={{ padding: '0' }}>
-                    <Row className="row-appear">
+                    <Row>
                         {filteredProducts.map((product: Product) => (
                             <Col key={product.id} xs={6} md={4} lg={3} style={{ marginBottom: '20px' }}>
                                 <ProductCard product={product} />
