@@ -38,29 +38,41 @@ const NewIn: React.FC = () => {
     };
 
     return (
-        <Container id='new-in-section' className='my-5 py-5 rounded'>
-            <h3 style={{ paddingLeft: '10px', marginBottom: '36px' }}>Prova Våra Söta Nyheter</h3>
-            <div style={{ position: 'relative' }}>
-                <div style={{ overflow: 'hidden' }}>
-                    <div style={cardWrapperStyle}>
-                        {products.map((product, index) => (
-                            <Col key={index} md={3} className='border-none px-1'>
-                                <ProductCard product={product} />
-                            </Col>
-                        ))}
+        <>
+            <Container id='new-in-section' className='my-5 py-5 rounded new-in-section-max'>
+                <h3 style={{ paddingLeft: '10px', marginBottom: '36px' }}>Prova Våra Söta Nyheter</h3>
+                <div style={{ position: 'relative' }}>
+                    <div style={{ overflow: 'hidden' }}>
+                        <div style={cardWrapperStyle}>
+                            {products.map((product, index) => (
+                                <Col key={index} xs={12} sm={6} md={4} lg={3} className='border-none px-1'>
+                                    <ProductCard product={product} />
+                                </Col>
+                            ))}
+                        </div>
                     </div>
+                    <Button variant="primary" onClick={handlePrev} disabled={currentIndex === 0} className='rounded-circle arrow-button' style={{ left: '-55px' }}>
+                        <IoIosArrowBack />
+                    </Button>
+                    <Button variant="primary" onClick={handleNext} disabled={currentIndex >= products.length - 4} className='rounded-circle arrow-button' style={{ right: '-55px' }}>
+                        <IoIosArrowForward />
+                    </Button>
                 </div>
-                <Button variant="primary" onClick={handlePrev} disabled={currentIndex === 0} className='rounded-circle arrow-button' style={{ left: '-55px' }}>
-                    <IoIosArrowBack />
-                </Button>
-                <Button variant="primary" onClick={handleNext} disabled={currentIndex >= products.length - 4} className='rounded-circle arrow-button' style={{ right: '-55px' }}>
-                    <IoIosArrowForward />
-                </Button>
-            </div>
-            <div className="pagination-dots-container">
-                {renderPaginationDots()}
-            </div>
-        </ Container>
+                <div className="pagination-dots-container">
+                    {renderPaginationDots()}
+                </div>
+            </ Container>
+            <Container id='new-in-section' className='my-5 py-5 rounded new-in-section-mini'>
+                <h3 style={{ paddingLeft: '10px', marginBottom: '36px', textAlign: 'center' }}>Prova Våra Söta Nyheter</h3>
+                <div className="scrollable-container"                >
+                    {products.map((product, index) => (
+                        <Col key={index} xs={12} sm={6} md={4} lg={3} className='border-none px-1'>
+                            <ProductCard product={product} />
+                        </Col>
+                    ))}
+                </div>
+            </ Container>
+        </>
     );
 };
 

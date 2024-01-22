@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BsTrash } from "react-icons/bs";
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { Product } from '../types/types';
 import { useCart } from '../hooks/useCart';
 import { useProducts } from '../hooks/useProducts';
@@ -11,7 +11,7 @@ interface CartItemProps {
     item: Product;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ item }) => {
+const CartItemSmall: React.FC<CartItemProps> = ({ item }) => {
     const [showModal, setShowModal] = useState(false);
 
     const handleOpenModal = () => {
@@ -41,24 +41,31 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
 
     return (
         <>
-            <Col xs={2}>
-                <img
-                    src={`https://www.bortakvall.se${item.images.thumbnail}`}
-                    alt={item.name}
-                    style={{ width: '50px' }}
-                />
-            </Col>
-            <Col xs={3}>
-                <div onClick={handleOpenModal} className='product-name'>{item.name}</div>
-            </Col>
-            <Col xs={3}>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                }}>
+            <Row className='p-0 mb-4  align-items-center'>
+                <Col xs={4} className='p-0'>
+                    <img
+                        src={`https://www.bortakvall.se${item.images.thumbnail}`}
+                        alt={item.name}
+                        style={{ width: '50px' }}
+                    />
+                </Col>
+
+                <Col xs={4} className=''>
+                    <div onClick={handleOpenModal} className='product-name'>{item.name}</div>
+                </Col>
+
+                <Col xs={4} className='p-0' style={{ fontSize: '12px' }}>
+                    <div ><b> {item.price} kr</b> /  {100} g  </div>
+                </Col>
+            </Row>
+
+            <Row className='p-0 align-items-center'>
+                <Col xs={4} className='p-0'>
                     <BsTrash className='cart-remove-icon' onClick={() => handleRemoveFromCart(item.id)} />
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100px' }}>
+                </Col>
+
+                <Col xs={4} className=''>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <IoIosRemove className='icon-btn'
                             onMouseDown={(e: React.MouseEvent) => e.preventDefault()}
                             onClick={() => handleRemoveOneFromCart(item.id)}
@@ -75,17 +82,17 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
                             onClick={() => handleAddOneToCart(item.id)}
                         />
                     </div>
-                </div>
-            </Col>
-            <Col xs={2}>
-                <div style={{ fontSize: '12px' }}><b> {item.price} kr</b> /  {100} g  </div>
-            </Col>
-            <Col xs={2} style={{ fontWeight: 'bolder' }}>
-                <div>{item.price * (item.quantity || 1)} kr</div>
-            </Col>
+                </Col>
+
+                <Col xs={4} className='p-0' style={{ fontWeight: 'bold', fontSize: '20px' }}>
+                    <div>{item.price * (item.quantity || 1)} kr</div>
+                </Col>
+            </Row>
+
+
             <ProductModal show={showModal} handleClose={handleCloseModal} product={item} />
         </>
     );
 };
 
-export default CartItem;
+export default CartItemSmall;

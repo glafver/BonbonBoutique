@@ -3,7 +3,7 @@ import subscribeImage from '../assets/subscribe-image.png';
 import { toast } from 'react-toastify';
 import { Slide } from "react-awesome-reveal";
 
-const SubscribeSection = () => {
+const SubscribeSection: React.FC = () => {
     const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         toast("Tack för att du prenumererar på vårt nyhetsbrev!");
@@ -12,12 +12,12 @@ const SubscribeSection = () => {
     return (
         <Container className="my-5 rounded" id='subscribe-section'>
             <Row>
-                <Col md={6}>
+                <Col sm={12} md={6}>
                     <Image src={subscribeImage} alt="Subscribe" fluid />
                 </Col>
-                <Col md={6} className="d-flex align-items-center justify-content-center">
+                <Col sm={12} md={6} className="d-flex align-items-center justify-content-center">
                     <Slide duration={1000} triggerOnce direction='right'>
-                        <div style={{ width: '70%' }}>
+                        <div className='text-wrapper'>
                             <h3>Prenumerera på vårt nyhetsbrev</h3>
                             <p>Håll dig uppdaterad med våra senaste nyheter och erbjudanden.</p>
 

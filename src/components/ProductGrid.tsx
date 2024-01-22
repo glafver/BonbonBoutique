@@ -1,12 +1,10 @@
-import { Dropdown } from 'react-bootstrap';
 import React, { useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import { Container, Col, Row, Dropdown } from 'react-bootstrap';
+
 import ProductCard from './ProductCard';
-import { Product } from '../types/types';
-import Col from 'react-bootstrap/Col';
-import { useProducts } from '../hooks/useProducts';
 import ProductsFilter from './ProductsFilter';
+import { useProducts } from '../hooks/useProducts';
+import { Product } from '../types/types';
 
 const ProductGrid: React.FC = () => {
 
@@ -32,7 +30,7 @@ const ProductGrid: React.FC = () => {
     return (
         <Container className="my-5 pt-4 rounded bg-bg" >
             <div id="sort-select">
-                <div style={{ fontSize: '26px', fontWeight: '500' }}>Vår sortiment</div>
+                <h3>Vår sortiment</h3>
                 <Dropdown onSelect={handleSelect}>
                     <Dropdown.Toggle>{getDisplayText(selectedOption)}</Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -43,18 +41,16 @@ const ProductGrid: React.FC = () => {
             </div>
             <Row>
                 <Col md={3} >
-                    <div id='products-filter-wrapper' className='rounded'>
+                    <div id='products-filter-wrapper' className='rounded mb-4'>
                         <ProductsFilter />
                     </div>
                 </Col>
                 <Col md={9} style={{ padding: '0' }}>
                     <Row className="row-appear">
                         {filteredProducts.map((product: Product) => (
-
-                            <Col key={product.id} xs={12} md={4} lg={3} style={{ marginBottom: '20px' }}>
+                            <Col key={product.id} xs={6} md={4} lg={3} style={{ marginBottom: '20px' }}>
                                 <ProductCard product={product} />
                             </Col>
-
                         ))}
                     </Row>
                 </Col>

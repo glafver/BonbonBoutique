@@ -1,4 +1,3 @@
-import React from 'react';
 import { Form } from 'react-bootstrap';
 import { useQuery } from 'react-query';
 import { fetchTags } from '../api/api';
@@ -8,7 +7,11 @@ import { useProducts } from '../hooks/useProducts';
 const ProductsFilter: React.FC = () => {
     const { data: tags } = useQuery<TagType[], Error>('tags', fetchTags);
 
-    const { changeCategories, categories, changePriceRange, priceRange } = useProducts();
+    const { changeCategories, categories, changePriceRange, priceRange, sale, changeSaleOption } = useProducts();
+
+    const handleSaleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        changeSaleOption(e.target.checked);
+    };
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>, id: number) => {
         const { checked } = event.target;
@@ -52,6 +55,14 @@ const ProductsFilter: React.FC = () => {
                         onChange={(e) => handleCheckboxChange(e, tag.id)}
                     />
                 ))}
+                <Form.Check
+                    key={'sale'}
+                    type="checkbox"
+                    name={"REA"}
+                    checked={sale || false}
+                    onChange={handleSaleChange}
+                    label={<span className="changing-color"><b>REA</b></span>}
+                />
             </div>
         </div>
     );

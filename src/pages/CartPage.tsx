@@ -1,11 +1,12 @@
-import { Button, Row, Col } from 'react-bootstrap';
-import { Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import CartItem from '../components/CartItem';
-import { useCart } from '../hooks/useCart';
 import { useState } from 'react';
-import OrderModal from '../components/OrderModal';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { AttentionSeeker } from 'react-awesome-reveal';
+import { useNavigate } from 'react-router-dom';
+
+import CartItem from '../components/CartItem';
+import CartItemSmall from '../components/CartItemSmall';
+import OrderModal from '../components/OrderModal';
+import { useCart } from '../hooks/useCart';
 
 const CartPage: React.FC = () => {
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -29,18 +30,23 @@ const CartPage: React.FC = () => {
             <Container id='cart-page' className='my-5 rounded'>
                 <div className="cart-container">
                     {cartItems.map((item, index) => (
-                        <Row className="cart-row rounded" key={index}>
-                            <CartItem item={item} />
-                        </Row>
+                        <>
+                            <Row className="cart-row rounded d-none d-lg-flex" key={index}>
+                                <CartItem item={item} />
+                            </Row>
+                            <Row className="cart-row rounded d-flex d-lg-none" key={index}>
+                                <CartItemSmall item={item} />
+                            </Row>
+                        </>
                     ))}
                 </div>
                 {cartItems.length ?
                     <div className='mb-3'>
                         <Row className="justify-content-end mb-3" style={{ fontSize: '24px' }}>
-                            <Col xs={2} >
+                            <Col xs={6} lg={2} >
                                 <div>Total: </div>
                             </Col>
-                            <Col xs={2} style={{ fontWeight: 'bolder', paddingRight: '24px' }}>
+                            <Col xs={6} lg={2} style={{ fontWeight: 'bolder', paddingRight: '24px' }}>
                                 <div>{totalAmount} kr</div>
                             </Col>
                         </Row>

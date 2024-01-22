@@ -1,0 +1,12 @@
+#contacts-page {
+    form {
+        width: 75%
+    }
+
+    @media (max-width: map-get($breakpoints, md)) {
+        form {
+            width: 100%
+        }
+    }
+
+}

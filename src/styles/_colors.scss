@@ -19,27 +19,50 @@
 }
 
 .changing-color {
-    animation: changeColor 10s linear infinite;
+    background: linear-gradient(90deg, #4D9DE0, #E15554, #E1BC29);
+    background-size: 200% auto;
+    color: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: changeColor 1s linear infinite;
 }
 
 @keyframes changeColor {
     0% {
-        color: pink;
-    }
-
-    25% {
-        color: $primary-color;
+        background-position: 0% 50%;
     }
 
     50% {
-        color: $accent-color(140, 240, 140);
-    }
-
-    75% {
-        color: $primary-color(224, 150, 253);
+        background-position: 100% 50%;
     }
 
     100% {
-        color: pink;
+        background-position: 0% 50%;
     }
 }
+
+// .changing-color {
+//     animation: changeColor 10s linear infinite;
+// }
+
+// @keyframes changeColor {
+//     0% {
+//         color: pink;
+//     }
+
+//     25% {
+//         color: $primary-color;
+//     }
+
+//     50% {
+//         color: $accent-color(140, 240, 140);
+//     }
+
+//     75% {
+//         color: $primary-color(224, 150, 253);
+//     }
+
+//     100% {
+//         color: pink;
+//     }
+// }

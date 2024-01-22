@@ -1,16 +1,15 @@
-#nav {
-    // background-color: $secondary-color;
-}
-
 #subnav {
     background-color: $primary-color;
 
     .navbar-nav {
-        width: 100%;
         display: flex;
-        justify-content: space-between;
-    }
+        justify-content: flex-end;
+        flex: 1;
 
+        @media (min-width: map-get($breakpoints, md)) {
+            justify-content: space-between;
+        }
+    }
 
     .nav-link {
         color: white;
@@ -19,6 +18,27 @@
         &:hover {
             color: $secondary-color;
         }
+    }
+
+    .navbar-toggler {
+        margin-left: auto;
+    }
+
+    .nav-item {
+        text-align: right;
+        justify-content: end;
+        margin: 0 10px;
+    }
+}
+
+.toggle-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @media (min-width: map-get($breakpoints, md)) {
+        margin-right: 20px;
+        width: auto;
     }
 }
 
@@ -69,13 +89,13 @@
 }
 
 .logo-lg {
-    @media (max-width: 991.98px) {
+    @media (max-width: map-get($breakpoints, md)) {
         display: none;
     }
 }
 
 .logo-sm {
-    @media (min-width: 991.98px) {
+    @media (min-width: map-get($breakpoints, md)) {
         display: none;
     }
 }

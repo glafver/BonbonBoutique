@@ -36,6 +36,15 @@
     padding: 0 12px;
     justify-content: space-between;
 
+    @media (max-width: map-get($breakpoints, md)) {
+        flex-direction: column;
+        align-items: end;
+
+        h3 {
+            display: none;
+        }
+    }
+
     button {
         text-align: right;
         width: 200px;

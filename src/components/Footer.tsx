@@ -14,14 +14,13 @@ const Footer = () => {
                                 cursor: 'pointer'
                             }}>
                             <div style={{ lineHeight: '30px' }}>
-                                <span className="logo logo-lg">Bonbon</span>
+                                <span className="logo">Bonbon</span>
                                 <br />
-                                <span className="logo logo-lg">Boutique</span>
-                                <span className="logo logo-sm">BB</span>
+                                <span className="logo">Boutique</span>
                             </div>
                         </div>
                     </Col>
-                    <Col md={3}>
+                    <Col md={3} className='mt-4 mt-lg-0'>
                         <h5>Meny</h5>
                         <ul className="list-unstyled">
                             <li><a href="/products">Sortiment</a> </li>

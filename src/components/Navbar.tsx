@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import { Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Container, Navbar } from 'react-bootstrap';
 import { IoArrowUpCircle } from "react-icons/io5";
-import SubMenu from './SubMenu';
+import { useNavigate } from 'react-router-dom';
+
 import CartIcon from './CartIcon';
 import FavIcon from './FavIcon';
+import SubMenu from './SubMenu';
 
 const NavbarComponent: React.FC = () => {
     const navigate = useNavigate();

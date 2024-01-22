@@ -1,21 +1,36 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Fade } from "react-awesome-reveal";
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const ContactsPage: React.FC = () => {
     return (
         <Fade duration={500} triggerOnce>
-            <Container className='my-5 '>
-                <Container className='p-5 rounded bg-bg'>
+            <Container className='my-5' id='contacts-page'>
+                <Container className='p-3 p-md-5 rounded bg-bg'>
                     <Row>
                         <Col md={6}>
-                            <h3 className='mb-5'>Kontakta oss</h3>
+                            <h3 className='mb-3'>Kontakta oss</h3>
                             <p><b>Adress: </b>Vagnmakarebyn 3C, Malmö, 21840</p>
                             <p><b>Telefon: </b> +46760558355</p>
                             <p>
                                 <FaFacebook className='icon-btn' /> <FaTwitter className='icon-btn' /> <FaInstagram className='icon-btn' />
                             </p>
+                            <h3 className='mb-3 mt-5'></h3>
+                            <Form className='mb-5 mb-md-0'>
+                                <Form.Group controlId="formBasicEmail" className='mb-3'>
+                                    <Form.Label>Din email</Form.Label>
+                                    <Form.Control type="email" />
+                                </Form.Group>
+
+                                <Form.Group controlId="formBasicText" className='mb-3'>
+                                    <Form.Label>Meddelande</Form.Label>
+                                    <Form.Control as="textarea" rows={3} />
+                                </Form.Group>
+
+                                <Button variant="primary" type="submit">
+                                    Skicka
+                                </Button>
+                            </Form>
                         </Col>
                         <Col md={6}>
                             <iframe

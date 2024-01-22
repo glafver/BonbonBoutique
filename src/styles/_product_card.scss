@@ -8,24 +8,37 @@
 
 #product-modal {
     min-width: 80vw;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
-    @media (min-width: 2560px) {
+    @media (min-width: map-get($breakpoints, md)) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: map-get($breakpoints, xl)) {
         min-width: 50vw;
     }
 
     .modal-body {
         background-color: $background-color;
-        padding: 36px 24px;
+    }
+
+    .modal-add-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (max-width: map-get($breakpoints, md)) {
+            flex-direction: column;
+            gap: 20px;
+        }
     }
 
     .icon-btn.close {
         position: absolute;
-        top: 14px;
-        right: 14px;
+        top: 8px;
+        right: 8px;
 
         &:hover {
             color: $primary-color;

@@ -12,9 +12,11 @@ type ProductsContextType = {
     changeCategories: (id: number, checked: boolean) => void;
     changeSortOption: (option: string) => void;
     changePriceRange: (name: string, value: string) => void;
+    changeSaleOption: (isOnSale: boolean) => void;
     categories: { [key: string]: boolean; };
     priceRange: { from: string; to: string; };
     products: Product[] | [];
+    sale: boolean;
 };
 
 type ProductsProviderProps = {
@@ -28,6 +30,7 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
 
     const [products, setProducts] = useState<Product[] | []>([]);
     const [categories, setCategories] = useState<{ [key: string]: boolean; }>({});
+    const [sale, setSale] = useState(false);
     const [sortOption, setSortOption] = useState<string>('priceLow');
     const [priceRange, setPriceRange] = useState({ from: '', to: '' });
 
@@ -36,6 +39,10 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
             ...prev,
             [id]: checked
         }));
+    };
+
+    const changeSaleOption = (isOnSale: boolean) => {
+        setSale(isOnSale);
     };
 
     const changeSortOption = (selectedOption: string) => {
@@ -73,6 +80,11 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
             );
         }
 
+        // Filter by sale
+        if (sale) {
+            filtered = filtered.filter(product => product.on_sale);
+        }
+
         // Sort filtered products
         switch (sortOption) {
             case 'priceLow':
@@ -86,7 +98,7 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
         }
 
         return filtered;
-    }, [products, categories, sortOption, priceRange]);
+    }, [products, categories, sortOption, priceRange, sale]);
 
     const getNewProducts = () => {
         const filtered = products.filter((product) =>
@@ -149,7 +161,9 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
                 changePriceRange,
                 categories,
                 priceRange,
-                products
+                products,
+                changeSaleOption,
+                sale
             }}>
             {children}
         </ProductsContext.Provider>

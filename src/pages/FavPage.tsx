@@ -1,12 +1,12 @@
 import React from 'react';
-import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import ProductCard from '../components/ProductCard';
-import { Product } from '../types/types';
-import boy_happy from '../assets/boy_happy.png';
-import { useFav } from '../hooks/useFav';
-import { Fade, Slide } from "react-awesome-reveal";
+import { AttentionSeeker, Fade, Slide } from 'react-awesome-reveal';
+import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { AttentionSeeker } from 'react-awesome-reveal';
+
+import boy_happy from '../assets/boy_happy.png';
+import ProductCard from '../components/ProductCard';
+import { useFav } from '../hooks/useFav';
+import { Product } from '../types/types';
 
 const FavPage: React.FC = () => {
     const { favItems } = useFav();
@@ -17,7 +17,7 @@ const FavPage: React.FC = () => {
             <Container id='fav-page' className='my-5 rounded'>
                 <Container className="my-5 rounded secondary-bg" >
                     <Row className="align-items-center justify-content-between">
-                        <Col md={4} className='mx-auto'>
+                        <Col md={4} className='mx-auto mt-3 mt-lg-0'>
                             <Slide duration={1000} triggerOnce>
                                 <h1>Dina Favoriter, Dina Ögonblick!</h1>
                                 <p>Bläddra genom din personliga samling av favoritgodis. Varje vald sötsak väntar på att återigen förgylla din dag!</p>
@@ -32,10 +32,9 @@ const FavPage: React.FC = () => {
                         </Col>
                     </Row>
                 </Container>
-                <Container className=" rounded secondary-bg bg-bg py-4" style={{ paddingTop: '20px' }}>
+                <Container className="rounded secondary-bg bg-bg py-4 pt-4">
                     <div>
                         <div style={{ fontSize: '26px', fontWeight: '500', paddingLeft: '12px', marginBottom: '20px' }}>Dina favoritprodukter</div>
-
                     </div>
                     <Row>
                         <Col md={12} style={{ padding: '0' }}>
@@ -59,7 +58,7 @@ const FavPage: React.FC = () => {
                                     </div>
                                     :
                                     favItems.map((product: Product) => (
-                                        <Col key={product.id} xs={12} md={4} lg={3} style={{ marginBottom: '20px' }}>
+                                        <Col key={product.id} xs={6} md={4} lg={3} className='mb-4'>
                                             <ProductCard product={product} />
                                         </Col>
                                     ))

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 
 const StarRating: React.FC = () => {

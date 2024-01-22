@@ -6,10 +6,10 @@ import { Slide } from "react-awesome-reveal";
 const HeroSection = () => {
     const navigate = useNavigate();
     return (
-        <Container className="my-5 rounded" id='hero-section' style={{ backgroundColor: '#dfe1da' }}>
+        <Container className="my-5 rounded" id='hero-section'>
             <Row className="align-items-center justify-content-between">
 
-                <Col md={4} className='mx-auto'>
+                <Col xs={12} md={6} lg={4} className='mx-auto'>
                     <Slide duration={1000} triggerOnce>
                         <h1>Söt lycka i varje bit!</h1>
                         <p>Där kalorier är bara siffror och glädjen är verklig. Kom och frossa i sötsaker!</p>
@@ -19,7 +19,7 @@ const HeroSection = () => {
                         </Button>
                     </Slide>
                 </Col>
-                <Col md={5} className='mt-5'>
+                <Col xs={12} md={6} lg={5} className='mt-5'>
                     <Image
                         src={girl_sweets}
                         alt="Girl with sweets"

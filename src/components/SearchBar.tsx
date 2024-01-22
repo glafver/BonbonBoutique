@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import { useState, ChangeEvent, useEffect } from 'react';
 import { Form, FormControl, ListGroup } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
 import { Product } from '../types/types';

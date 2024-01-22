@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import { Product } from '../types/types';
-import ProductModal from './ProductModal';
-import { useCart } from '../hooks/useCart';
-import { useProducts } from '../hooks/useProducts';
 import { FaBasketShopping } from "react-icons/fa6";
 import { BsHeart, BsFillHeartFill } from "react-icons/bs";
-import StarRating from './StarRating';
-import { useFav } from '../hooks/useFav';
-import { toast } from 'react-toastify';
 import { Fade } from "react-awesome-reveal";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import { Product } from '../types/types';
+import { useCart } from '../hooks/useCart';
+import { useProducts } from '../hooks/useProducts';
+import { useFav } from '../hooks/useFav';
+import ProductModal from './ProductModal';
+import StarRating from './StarRating';
 
 interface ProductCardProps {
     product: Product;
@@ -108,7 +109,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         product={product}
                     />
                 }
-                {product.tags.find(tag => tag.id === 124) ? <img width="40" height="40" src="https://img.icons8.com/parakeet/96/new.png" alt="new" style={{ position: 'absolute', left: '5px', top: '5px' }} /> : null}
+                <div style={{ position: 'absolute', left: '5px', top: '5px', display: 'flex', gap: '5px' }}>
+                    {product.on_sale ? <img width="40" height="40" src="https://img.icons8.com/parakeet/96/sale.png" alt="sale" /> : null}
+                    {product.tags.find(tag => tag.id === 124) ? <img width="40" height="40" src="https://img.icons8.com/parakeet/96/new.png" alt="new" /> : null}
+                </div>
+
                 {isProductFav(product.id) ? <BsFillHeartFill onClick={() => handleRemoveFav(product.id)} className='icon-btn card-fav-icon' /> : <BsHeart onClick={() => handleAddFav(product.id)} className='icon-btn card-fav-icon' />}
             </Card>
         </Fade>

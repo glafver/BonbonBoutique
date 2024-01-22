@@ -1,4 +1,12 @@
 #faq-page {
+    .rounded.bg-bg {
+        padding: 20px 100px;
+
+        @media (max-width: map-get($breakpoints, md)) {
+            padding: 20px 20px;
+        }
+    }
+
     .accordion-button {
         background-color: white !important;
         font-weight: 600 !important;

@@ -7,3 +7,11 @@ $secondary-accent-color: #fff2b8;
 $background-color: #dfe1da;
 
 $text-color: #495057;
+
+$breakpoints: (
+    xs: 576px,
+    sm: 768px,
+    md: 992px,
+    lg: 1200px,
+    xl: 2560px
+);

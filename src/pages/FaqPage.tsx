@@ -94,7 +94,7 @@ const faqItems = [
 const FaqPage: React.FC = () => {
     return (
         <Container id='faq-page' className='my-5'>
-            <Container className="my-5 rounded bg-bg" style={{ padding: '20px 100px' }}>
+            <Container className="my-5 rounded bg-bg" >
                 <Fade duration={1000} triggerOnce >
                     {faqItems.map((category, index) => (
                         <div className='mb-5' key={index}>
