@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BsTrash } from "react-icons/bs";
 import { Col } from 'react-bootstrap';
 import { Product } from '../types/types';
 import { useCart } from '../hooks/useCart';
 import { useProducts } from '../hooks/useProducts';
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
-import ProductModal from './ProductModal';
+import { useNavigate } from 'react-router-dom';
 
 interface CartItemProps {
     item: Product;
 }
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
-    const [showModal, setShowModal] = useState(false);
 
-    const handleOpenModal = () => {
-        setShowModal(true);
-    };
+    const navigate = useNavigate();
 
-    const handleCloseModal = () => {
-        setShowModal(false);
+    const handleShowProductPage = () => {
+        navigate(`/product/${item.id}`);
     };
 
     const { addToCart, removeFromCart } = useCart();
@@ -41,16 +38,18 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
 
     return (
         <>
-            <Col xs={2}>
+            <Col xs={2} onClick={handleShowProductPage}>
                 <img
                     src={`https://www.bortakvall.se${item.images.thumbnail}`}
                     alt={item.name}
-                    style={{ width: '50px' }}
+                    style={{ width: '50px', cursor: 'pointer' }}
                 />
             </Col>
+
             <Col xs={3}>
-                <div onClick={handleOpenModal} className='product-name'>{item.name}</div>
+                <div onClick={handleShowProductPage} className='product-name'>{item.name}</div>
             </Col>
+
             <Col xs={3}>
                 <div style={{
                     display: 'flex',
@@ -83,7 +82,6 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
             <Col xs={2} style={{ fontWeight: 'bolder' }}>
                 <div>{item.price * (item.quantity || 1)} kr</div>
             </Col>
-            <ProductModal show={showModal} handleClose={handleCloseModal} product={item} />
         </>
     );
 };

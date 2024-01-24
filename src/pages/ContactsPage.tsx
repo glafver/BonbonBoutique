@@ -1,16 +1,22 @@
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Fade } from "react-awesome-reveal";
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { Breadcrumb } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const ContactsPage: React.FC = () => {
     return (
         <Fade duration={500} triggerOnce>
             <Container className='my-5' id='contacts-page'>
+                <Breadcrumb className='ps-2'>
+                    <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Hem</Breadcrumb.Item>
+                    <Breadcrumb.Item active>Kontakter</Breadcrumb.Item>
+                </Breadcrumb>
                 <Container className='p-3 p-md-5 rounded bg-bg'>
                     <Row>
                         <Col md={6}>
                             <h3 className='mb-3'>Kontakta oss</h3>
-                            <p><b>Adress: </b>Vagnmakarebyn 3C, Malmö, 21840</p>
+                            <p><b>Adress: </b>Stortorget, Malmö, 21840</p>
                             <p><b>Telefon: </b> +46760558355</p>
                             <p>
                                 <FaFacebook className='icon-btn' /> <FaTwitter className='icon-btn' /> <FaInstagram className='icon-btn' />

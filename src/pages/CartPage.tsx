@@ -7,6 +7,8 @@ import CartItem from '../components/CartItem';
 import CartItemSmall from '../components/CartItemSmall';
 import OrderModal from '../components/OrderModal';
 import { useCart } from '../hooks/useCart';
+import { Breadcrumb } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const CartPage: React.FC = () => {
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -26,8 +28,12 @@ const CartPage: React.FC = () => {
     const totalAmount = cartItems.reduce((total, item) => total + item.price * (item.quantity || 1), 0);
 
     return (
-        <Container>
-            <Container id='cart-page' className='my-5 rounded'>
+        <Container id='cart-page' className='my-5'>
+            <Breadcrumb className='ps-2'>
+                <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Hem</Breadcrumb.Item>
+                <Breadcrumb.Item active>Kundvagn</Breadcrumb.Item>
+            </Breadcrumb>
+            <Container className='p-4 rounded bg-bg'>
                 <div className="cart-container">
                     {cartItems.map((item, index) => (
                         <>
@@ -41,12 +47,12 @@ const CartPage: React.FC = () => {
                     ))}
                 </div>
                 {cartItems.length ?
-                    <div className='mb-3'>
-                        <Row className="justify-content-end mb-3" style={{ fontSize: '24px' }}>
+                    <div className='mb-3 text-center'>
+                        <Row className="justify-content-end mb-3 fs-4" >
                             <Col xs={6} lg={2} >
                                 <div>Total: </div>
                             </Col>
-                            <Col xs={6} lg={2} style={{ fontWeight: 'bolder', paddingRight: '24px' }}>
+                            <Col xs={6} lg={2} className='fw-bold'>
                                 <div>{totalAmount} kr</div>
                             </Col>
                         </Row>
@@ -57,7 +63,7 @@ const CartPage: React.FC = () => {
                         </Button>
                     </div>
                     :
-                    <div className='mb-3'>
+                    <div className='mb-3 text-center'>
                         <div className='mb-5'>Din kundvagn är tom.</div>
                         <AttentionSeeker effect="swing" >
                             <Button

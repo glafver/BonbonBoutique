@@ -63,7 +63,7 @@ const NewIn: React.FC = () => {
                 </div>
             </ Container>
             <Container id='new-in-section' className='my-5 py-5 rounded new-in-section-mini'>
-                <h3 style={{ paddingLeft: '10px', marginBottom: '36px', textAlign: 'center' }}>Prova Våra Söta Nyheter</h3>
+                <h3 style={{ paddingLeft: '10px', marginBottom: '36px', textAlign: 'center' }}>Prova våra söta nyheter</h3>
                 <div className="scrollable-container"                >
                     {products.map((product, index) => (
                         <Col key={index} xs={12} sm={6} md={4} lg={3} className='border-none px-1'>

@@ -1,4 +1,6 @@
 #home-page {
+    overflow: hidden;
+
     #hero-section {
         background-color: $secondary-color;
         padding: 60px 60px 0px 60px;
@@ -27,7 +29,7 @@
             position: relative;
             margin: 0px 45px;
 
-            @media (min-width: map-get($breakpoints, md)) {
+            @media (max-width: map-get($breakpoints, md)) {
                 margin: 10px 0px;
             }
 
@@ -101,9 +103,9 @@
                 scrollbar-width: none;
                 -ms-overflow-style: none;
 
-                &::-webkit-scrollbar {
-                    display: none;
-                }
+                // &::-webkit-scrollbar {
+                //     display: none;
+                // }
             }
         }
     }
@@ -132,6 +134,10 @@
     #subscribe-section {
         background-color: $background-color;
 
+        @media (max-width: map-get($breakpoints, md)) {
+            text-align: center;
+        }
+
         .text-wrapper {
             width: 70%;
 
@@ -145,9 +151,7 @@
             }
         }
 
-        @media (max-width: map-get($breakpoints, md)) {
-            text-align: center;
-        }
+        .subscribe-email-input {}
 
         .btn {
             background-color: $accent-color !important;

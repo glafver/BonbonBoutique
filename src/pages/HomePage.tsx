@@ -10,13 +10,14 @@ import SubscribeSection from '../components/SubscribeSection';
 const HomePage: React.FC = () => {
     return (
         <Container id='home-page' >
-            <Fade duration={500} triggerOnce cascade>
-                <HeroSection />
-                <Slide direction='right' triggerOnce><BenefitsSection /></Slide>
-                <NewIn />
-                <Slide direction='left' triggerOnce><LogosSection /></Slide>
-                <SubscribeSection />
-            </Fade>
+            <Fade duration={1000} triggerOnce> <HeroSection /></Fade>
+
+            <Slide direction='right' triggerOnce><BenefitsSection /></Slide>
+            <Fade duration={1000} triggerOnce><NewIn /></Fade>
+
+            <Slide direction='left' triggerOnce><LogosSection /></Slide>
+            <Fade duration={1000} triggerOnce><SubscribeSection /></Fade>
+
         </Container>
     );
 };

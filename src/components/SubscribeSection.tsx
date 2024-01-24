@@ -20,10 +20,9 @@ const SubscribeSection: React.FC = () => {
                         <div className='text-wrapper'>
                             <h3>Prenumerera på vårt nyhetsbrev</h3>
                             <p>Håll dig uppdaterad med våra senaste nyheter och erbjudanden.</p>
-
-                            <Form onSubmit={handleSubscribe} style={{ display: 'flex', height: '36px' }}>
-                                <Form.Group controlId="email" style={{ width: '200px', marginRight: '20px' }}>
-                                    <Form.Control type="email" placeholder="E-mail" />
+                            <Form onSubmit={handleSubscribe} className='d-flex'>
+                                <Form.Group controlId="email" className='subscribe-email-input mx-2'>
+                                    <Form.Control type="email" placeholder="E-mail" defaultValue="test@test.se" />
                                 </Form.Group>
                                 <Button variant="primary" type="submit">
                                     Prenumera

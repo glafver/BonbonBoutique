@@ -7,6 +7,8 @@ import boy_happy from '../assets/boy_happy.png';
 import ProductCard from '../components/ProductCard';
 import { useFav } from '../hooks/useFav';
 import { Product } from '../types/types';
+import { Breadcrumb } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const FavPage: React.FC = () => {
     const { favItems } = useFav();
@@ -15,11 +17,15 @@ const FavPage: React.FC = () => {
     return (
         <Fade duration={500} triggerOnce>
             <Container id='fav-page' className='my-5 rounded'>
-                <Container className="my-5 rounded secondary-bg" >
+                <Breadcrumb className='ps-2'>
+                    <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Hem</Breadcrumb.Item>
+                    <Breadcrumb.Item active>Dina favoritprodukter</Breadcrumb.Item>
+                </Breadcrumb>
+                <Container className="rounded secondary-bg mb-5" >
                     <Row className="align-items-center justify-content-between">
                         <Col md={4} className='mx-auto mt-3 mt-lg-0'>
                             <Slide duration={1000} triggerOnce>
-                                <h1>Dina Favoriter, Dina Ögonblick!</h1>
+                                <h1>Dina favoriter, dina ögonblick!</h1>
                                 <p>Bläddra genom din personliga samling av favoritgodis. Varje vald sötsak väntar på att återigen förgylla din dag!</p>
                             </Slide>
                         </Col>
@@ -33,11 +39,9 @@ const FavPage: React.FC = () => {
                     </Row>
                 </Container>
                 <Container className="rounded secondary-bg bg-bg py-4 pt-4">
-                    <div>
-                        <div style={{ fontSize: '26px', fontWeight: '500', paddingLeft: '12px', marginBottom: '20px' }}>Dina favoritprodukter</div>
-                    </div>
+                    <h2 className='ps-3 mb-4'>Dina favoritprodukter</h2>
                     <Row>
-                        <Col md={12} style={{ padding: '0' }}>
+                        <Col md={12} className='p-0'>
                             <Row className="row-appear">
                                 {favItems?.length === 0 ?
                                     <div className='d-flex flex-column justify-content-center align-items-center mb-4'>
@@ -45,11 +49,6 @@ const FavPage: React.FC = () => {
                                         </div>
                                         <AttentionSeeker effect="swing" >
                                             <Button
-                                                style={{
-                                                    backgroundColor: 'deeppink',
-                                                    borderColor: 'deeppink',
-                                                    color: 'white'
-                                                }}
                                                 onClick={() => { window.scrollTo(0, 0); navigate('/products'); }}
                                             >
                                                 Handla nu!

@@ -42,6 +42,10 @@
     }
 }
 
+.navbar-toggler-icon {
+    color: white;
+}
+
 #search-bar {
     position: relative;
 
@@ -84,20 +88,16 @@
 
 .logo {
     font-family: 'Modak', sans-serif;
-    font-size: 50px;
     color: $primary-color;
 }
 
 .logo-lg {
-    @media (max-width: map-get($breakpoints, md)) {
-        display: none;
-    }
+    font-size: 50px;
 }
 
 .logo-sm {
-    @media (min-width: map-get($breakpoints, md)) {
-        display: none;
-    }
+    font-size: 34px;
+    line-height: 27px;
 }
 
 #up-button {

@@ -77,7 +77,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ show, handleClose, product 
     };
 
     return (
-        <Modal show={show} onHide={handleCloseModal} id='product-modal'  >
+        <Modal show={show} onHide={handleCloseModal} id='product-modal' className='d-none d-lg-flex'>
             <Modal.Body className='rounded py-4 px-3'>
                 <IoCloseOutline className='icon-btn close position-absolute' onClick={handleCloseModal} />
                 {isLoading ? (

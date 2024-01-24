@@ -2,6 +2,8 @@ import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
 import { useProducts } from '../hooks/useProducts';
 import ProductGrid from '../components/ProductGrid';
+import { Breadcrumb } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const ProductsPage: React.FC = () => {
 
@@ -10,14 +12,10 @@ const ProductsPage: React.FC = () => {
     if (isLoading) {
         return (
             <Container id='products-page' className='my-5'>
+
                 <Container id='products-page'
-                    className='my-5 pt-4 rounded bg-bg'
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        position: 'relative',
-                        height: '90vh'
-                    }}>
+                    className="my-5 pt-4 rounded bg-bg d-flex justify-content-center position-relative"
+                    style={{ height: '90vh' }}>
                     <Spinner className='loading-spinner' />
                 </Container>
             </Container>
@@ -32,6 +30,10 @@ const ProductsPage: React.FC = () => {
 
     return (
         <Container id='products-page' className='my-5'>
+            <Breadcrumb className='ps-2'>
+                <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Hem</Breadcrumb.Item>
+                <Breadcrumb.Item active>Produkter</Breadcrumb.Item>
+            </Breadcrumb>
             <ProductGrid />
         </Container>
     );

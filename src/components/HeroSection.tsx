@@ -8,12 +8,10 @@ const HeroSection = () => {
     return (
         <Container className="my-5 rounded" id='hero-section'>
             <Row className="align-items-center justify-content-between">
-
                 <Col xs={12} md={6} lg={4} className='mx-auto'>
                     <Slide duration={1000} triggerOnce>
                         <h1>Söt lycka i varje bit!</h1>
                         <p>Där kalorier är bara siffror och glädjen är verklig. Kom och frossa i sötsaker!</p>
-
                         <Button type="submit" onClick={() => { navigate('/products'); }}>
                             Upptäck vårt sortiment
                         </Button>
@@ -26,7 +24,6 @@ const HeroSection = () => {
                         fluid
                     />
                 </Col>
-
             </Row>
         </Container>
     );

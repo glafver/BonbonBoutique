@@ -24,9 +24,14 @@ const NavbarComponent: React.FC = () => {
                             display: 'flex',
                             cursor: 'pointer'
                         }}>
-                        <div>
-                            <span className="logo logo-lg">BonbonBoutique</span>
-                            <span className="logo logo-sm">BB</span>
+                        <div className="logo logo-lg d-none d-lg-flex">
+                            <span >BonbonBoutique</span>
+                        </div>
+
+                        <div className='logo logo-sm d-block d-lg-none'>
+                            <span>Bonbon</span>
+                            <br />
+                            <span>Boutique</span>
                         </div>
                     </Navbar.Brand>
                     <div style={{ display: 'flex', alignItems: 'center' }}>

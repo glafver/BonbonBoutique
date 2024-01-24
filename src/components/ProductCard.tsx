@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { FaBasketShopping } from "react-icons/fa6";
 import { BsHeart, BsFillHeartFill } from "react-icons/bs";
@@ -10,8 +9,8 @@ import { Product } from '../types/types';
 import { useCart } from '../hooks/useCart';
 import { useProducts } from '../hooks/useProducts';
 import { useFav } from '../hooks/useFav';
-import ProductModal from './ProductModal';
 import StarRating from './StarRating';
+import ProductStickers from './ProductStickers';
 
 interface ProductCardProps {
     product: Product;
@@ -22,29 +21,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const { addToCart } = useCart();
     const { addFav, removeFav, isProductFav } = useFav();
     const { isProductAvailable } = useProducts();
-    const location = useLocation();
     const navigate = useNavigate();
-
-    const [showModal, setShowModal] = useState<boolean>(false);
 
     const handleAddToCart = (product: Product) => {
         if (isProductAvailable(product.id, 1)) {
             addToCart(product.id, 1);
             toast(<div>
-                <img src={`https://www.bortakvall.se` + product.images.thumbnail} alt={product.name} style={{ width: '50px', height: '50px' }} />
+                <img src={`https://www.bortakvall.se` + product.images.thumbnail} alt={product.name} width="50" height="50" />
                 <strong style={{ marginLeft: '10px' }}>{product.name}</strong>
                 <br /> har lagts till i kundvagnen
             </div>);
         }
     };
 
-    const handleShowModal = () => {
-        setShowModal(true);
-    };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-        navigate(location.pathname);
+    const handleShowProductPage = () => {
+        navigate(`/product/${product.id}`);
     };
 
     const handleAddFav = (id: number) => {
@@ -55,16 +46,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         removeFav(id);
     };
 
-    useEffect(() => {
-        if (location.state?.productId === product.id) {
-            setShowModal(true);
-        }
-    }, [location.state?.productId, product.id]);
-
     return (
         <Fade triggerOnce>
             <Card className='card'>
-                <div className="position-relative">
+                <div className="position-relative" onClick={handleShowProductPage}>
                     <Card.Img
                         variant="top"
                         src={`https://www.bortakvall.se` + product.images.thumbnail}
@@ -80,12 +65,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         </div>
                     }
                 </div>
-                <Card.Body
-                    style={{ paddingTop: '0px' }}
-                >
+                <Card.Body className='pt-0'>
                     <Card.Text
                         className='product-name'
-                        onClick={handleShowModal}
+                        onClick={handleShowProductPage}
                         style={{
                             height: '48px',
                             cursor: 'pointer',
@@ -94,7 +77,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     >
                         {product.name}
                     </Card.Text>
-                    <StarRating />
+                    <StarRating rating={product.rating} />
                     <div className='d-flex justify-content-between align-items-center'>
                         <div >
                             <b>{product.price} kr</b>  / 100g
@@ -102,19 +85,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         {isProductAvailable(product.id) ? <FaBasketShopping onClick={() => handleAddToCart(product)} className='shop-icon icon-btn' /> : null}
                     </div>
                 </Card.Body>
-                {showModal &&
-                    <ProductModal
-                        show={showModal}
-                        handleClose={handleCloseModal}
-                        product={product}
-                    />
-                }
-                <div style={{ position: 'absolute', left: '5px', top: '5px', display: 'flex', gap: '5px' }}>
-                    {product.on_sale ? <img width="40" height="40" src="https://img.icons8.com/parakeet/96/sale.png" alt="sale" /> : null}
-                    {product.tags.find(tag => tag.id === 124) ? <img width="40" height="40" src="https://img.icons8.com/parakeet/96/new.png" alt="new" /> : null}
-                </div>
-
-                {isProductFav(product.id) ? <BsFillHeartFill onClick={() => handleRemoveFav(product.id)} className='icon-btn card-fav-icon' /> : <BsHeart onClick={() => handleAddFav(product.id)} className='icon-btn card-fav-icon' />}
+                <ProductStickers product={product} />
+                {isProductFav(product.id)
+                    ? <BsFillHeartFill onClick={() => handleRemoveFav(product.id)} className='icon-btn card-fav-icon' />
+                    : <BsHeart onClick={() => handleAddFav(product.id)} className='icon-btn card-fav-icon' />}
             </Card>
         </Fade>
     );

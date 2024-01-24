@@ -93,6 +93,12 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
             case 'priceHigh':
                 filtered.sort((a, b) => b.price - a.price);
                 break;
+            case 'ratingLow':
+                filtered.sort((a, b) => (a.rating || 0) - (b.rating || 0));
+                break;
+            case 'ratingHigh':
+                filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+                break;
             default:
                 break;
         }
@@ -143,8 +149,13 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
 
     useEffect(() => {
         if (data) {
-            data.sort((a, b) => a.price - b.price);
-            setProducts(data);
+            const updatedData = data.map(product => {
+                const randomRating = Math.ceil(Math.random() * 5);
+                return { ...product, rating: randomRating };
+            });
+
+            updatedData.sort((a, b) => a.price - b.price);
+            setProducts(updatedData);
         }
     }, [data]);
 

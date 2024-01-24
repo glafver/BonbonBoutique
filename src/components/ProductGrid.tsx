@@ -23,12 +23,14 @@ const ProductGrid: React.FC = () => {
         switch (key) {
             case 'priceLow': return 'Pris: lågt till högt';
             case 'priceHigh': return 'Pris: högt till lågt';
+            case 'ratingLow': return 'Betyg: lågt till högt';
+            case 'ratingHigh': return 'Betyg: högt till lågt';
             default: return 'Pris: lågt till högt';
         }
     };
 
     return (
-        <Container className="my-5 pt-4 rounded bg-bg" >
+        <Container className="pt-4 rounded bg-bg" >
             <div id="sort-select">
                 <h3>Vår sortiment</h3>
                 <Dropdown onSelect={handleSelect}>
@@ -36,6 +38,8 @@ const ProductGrid: React.FC = () => {
                     <Dropdown.Menu>
                         <Dropdown.Item eventKey="priceLow">Pris: lågt till högt</Dropdown.Item>
                         <Dropdown.Item eventKey="priceHigh">Pris: högt till lågt</Dropdown.Item>
+                        <Dropdown.Item eventKey="ratingLow">Betyg: lågt till högt</Dropdown.Item>
+                        <Dropdown.Item eventKey="ratingHigh">Betyg: högt till lågt</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>

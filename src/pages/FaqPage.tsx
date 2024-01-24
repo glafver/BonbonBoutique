@@ -1,6 +1,8 @@
 import React from 'react';
 import { Accordion, Container } from 'react-bootstrap';
 import { Fade } from "react-awesome-reveal";
+import { Breadcrumb } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const faqItems = [
     {
@@ -94,11 +96,15 @@ const faqItems = [
 const FaqPage: React.FC = () => {
     return (
         <Container id='faq-page' className='my-5'>
-            <Container className="my-5 rounded bg-bg" >
+            <Breadcrumb className='ps-2'>
+                <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Hem</Breadcrumb.Item>
+                <Breadcrumb.Item active>FAQ</Breadcrumb.Item>
+            </Breadcrumb>
+            <Container className="rounded bg-bg" >
                 <Fade duration={1000} triggerOnce >
                     {faqItems.map((category, index) => (
                         <div className='mb-5' key={index}>
-                            <h4 style={{ marginBottom: '20px' }}>{category.category}</h4>
+                            <h4 className='mb-'>{category.category}</h4>
                             <Accordion >
                                 {category.questions.map((item, idx) => (
                                     <Accordion.Item eventKey={String(idx)} key={idx}>

@@ -1,0 +1,65 @@
+#product-page {
+
+    .modal-body {
+        background-color: $background-color;
+    }
+
+    .modal-add-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (max-width: map-get($breakpoints, md)) {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+
+    .modal-img {
+        background-color: white;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .img-fluid {
+            max-width: 100%;
+            object-fit: contain;
+
+            @media (max-width: map-get($breakpoints, md)) {
+                max-width: 50%;
+            }
+        }
+    }
+
+    .modal-text {
+        background-color: white;
+        height: 100%;
+    }
+
+    .modal-description {
+        p {
+            font-size: 12px;
+        }
+
+        p:nth-child(2) {
+            font-size: 10px;
+        }
+    }
+
+    .add-to-cart-btn {
+        width: max-content;
+        color: white !important;
+    }
+}
+
+.product-page.icon-btn.close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+
+    &:hover {
+        color: $primary-color;
+    }
+}

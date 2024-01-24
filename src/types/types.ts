@@ -17,6 +17,7 @@ export interface Product {
     tags: TagType[];
     quantity?: number;
     on_sale?: boolean;
+    rating?: number;
 }
 
 export interface ExtandedProduct extends Product {
