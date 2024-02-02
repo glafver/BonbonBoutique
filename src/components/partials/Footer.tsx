@@ -1,9 +1,12 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Modal, Button } from 'react-bootstrap';
 import { FaPhone, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Footer = () => {
+    const [show, setShow] = useState(true);
 
+    const handleClose = () => setShow(false);
     return (
         <footer id='footer' className="py-5">
             <Container>
@@ -47,6 +50,14 @@ const Footer = () => {
                         </p>
                     </Col>
                 </Row>
+                <Modal show={show} centered className='gdpr-modal'>
+                    <Modal.Body className='text-center py-4'>
+                        <p className='py-3'>Vi använder cookies för att förbättra din upplevelse. Genom att fortsätta besöka denna webbplats godkänner du vår användning av cookies.</p>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Jag godkänner
+                        </Button>
+                    </Modal.Body>
+                </Modal>
             </Container>
         </footer>
     );
