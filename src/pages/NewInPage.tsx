@@ -1,11 +1,9 @@
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col, Image, Breadcrumb } from 'react-bootstrap';
 import { Fade, Slide } from "react-awesome-reveal";
-
 import girl_open_candy from '../assets/girl_open_candy.png';
-import ProductCard from '../components/ProductCard';
+import ProductCard from '../components/products/ProductCard';
 import { useProducts } from '../hooks/useProducts';
 import { Product } from '../types/types';
-import { Breadcrumb } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const NewInPage: React.FC = () => {
@@ -13,7 +11,7 @@ const NewInPage: React.FC = () => {
 
     return (
         <Fade duration={500} triggerOnce cascade>
-            <Container id='new-in-page' className='my-5'>
+            <Container id='new-in-page' className='my-4 page-wrapper'>
                 <Breadcrumb className='ps-2'>
                     <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Hem</Breadcrumb.Item>
                     <Breadcrumb.Item active>Nya produkter</Breadcrumb.Item>

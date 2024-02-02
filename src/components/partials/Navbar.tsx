@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import CartIcon from './CartIcon';
 import FavIcon from './FavIcon';
-import SubMenu from './SubMenu';
+import SubNavbar from './SubNavbar';
 
 const NavbarComponent: React.FC = () => {
     const navigate = useNavigate();
@@ -20,10 +20,8 @@ const NavbarComponent: React.FC = () => {
                 <Container>
                     <Navbar.Brand
                         onClick={handleGoToHome}
-                        style={{
-                            display: 'flex',
-                            cursor: 'pointer'
-                        }}>
+                        className='d-flex'
+                        role='button'>
                         <div className="logo logo-lg d-none d-lg-flex">
                             <span >BonbonBoutique</span>
                         </div>
@@ -34,13 +32,13 @@ const NavbarComponent: React.FC = () => {
                             <span>Boutique</span>
                         </div>
                     </Navbar.Brand>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div className='d-flex align-items-center'>
                         <FavIcon />
                         <CartIcon />
                     </div>
                 </Container>
             </Navbar>
-            <SubMenu />
+            <SubNavbar />
             <a href='#nav'>
                 <IoArrowUpCircle id='up-button' className='icon-btn' />
             </a>

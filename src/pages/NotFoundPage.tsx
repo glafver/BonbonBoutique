@@ -1,4 +1,3 @@
-// NotFoundPage.tsx
 import React from 'react';
 import { Container, Breadcrumb, Image, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -7,7 +6,7 @@ import not_found from '../assets/not_found.png';
 
 const NotFoundPage: React.FC = () => {
     return (
-        <Container id='not-found-page' className='my-5'>
+        <Container id='not-found-page' className='my-4 page-wrapper'>
             <Breadcrumb className='ps-2'>
                 <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Hem</Breadcrumb.Item>
                 <Breadcrumb.Item active>Sida hittades inte</Breadcrumb.Item>

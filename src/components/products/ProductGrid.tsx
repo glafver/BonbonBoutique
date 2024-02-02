@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Col, Row, Dropdown } from 'react-bootstrap';
-
 import ProductCard from './ProductCard';
 import ProductsFilter from './ProductsFilter';
-import { useProducts } from '../hooks/useProducts';
-import { Product } from '../types/types';
+import { useProducts } from '../../hooks/useProducts';
+import { Product } from '../../types/types';
 
 const ProductGrid: React.FC = () => {
 
@@ -43,16 +42,16 @@ const ProductGrid: React.FC = () => {
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
-            <Row>
+            <Row >
                 <Col md={3} >
                     <div id='products-filter-wrapper' className='rounded mb-4'>
                         <ProductsFilter />
                     </div>
                 </Col>
-                <Col md={9} style={{ padding: '0' }}>
+                <Col md={9} className='p-0'>
                     <Row>
                         {filteredProducts.map((product: Product) => (
-                            <Col key={product.id} xs={6} md={4} lg={3} style={{ marginBottom: '20px' }}>
+                            <Col key={product.id} xs={6} md={4} lg={3} className="mb-4">
                                 <ProductCard product={product} />
                             </Col>
                         ))}

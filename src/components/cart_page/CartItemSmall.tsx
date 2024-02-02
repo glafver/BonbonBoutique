@@ -1,9 +1,9 @@
 import React from 'react';
 import { BsTrash } from "react-icons/bs";
 import { Col, Row } from 'react-bootstrap';
-import { Product } from '../types/types';
-import { useCart } from '../hooks/useCart';
-import { useProducts } from '../hooks/useProducts';
+import { Product } from '../../types/types';
+import { useCart } from '../../hooks/useCart';
+import { useProducts } from '../../hooks/useProducts';
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 
@@ -38,7 +38,7 @@ const CartItemSmall: React.FC<CartItemProps> = ({ item }) => {
 
     return (
         <>
-            <Row className='p-0 mb-4  align-items-center ' style={{ fontSize: '12px' }}>
+            <Row className='p-0 mb-4 align-items-center' style={{ fontSize: '12px' }}>
                 <Col xs={3} className='p-0' onClick={handleShowProductPage}>
                     <img
                         src={`https://www.bortakvall.se${item.images.thumbnail}`}

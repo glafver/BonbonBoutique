@@ -1,8 +1,8 @@
 import { Form } from 'react-bootstrap';
 import { useQuery } from 'react-query';
-import { fetchTags } from '../api/api';
-import { TagType } from '../types/types';
-import { useProducts } from '../hooks/useProducts';
+import { fetchTags } from '../../api/api';
+import { TagType } from '../../types/types';
+import { useProducts } from '../../hooks/useProducts';
 
 const ProductsFilter: React.FC = () => {
     const { data: tags } = useQuery<TagType[], Error>('tags', fetchTags);

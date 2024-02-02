@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { fetchProduct } from '../api/api.js';
 import { ExtandedProduct } from '../types/types';
 import { useQuery } from 'react-query';
-import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button, Modal, Breadcrumb } from 'react-bootstrap';
 import { useProducts } from '../hooks/useProducts';
 import { useCart } from '../hooks/useCart';
 import { useFav } from '../hooks/useFav';
-import StarRating from '../components/StarRating';
+import StarRating from '../components/products/StarRating.js';
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
 import { Fade } from "react-awesome-reveal";
 import { IoAdd, IoRemove, IoCloseOutline } from "react-icons/io5";
 import { BsHeart, BsFillHeartFill } from "react-icons/bs";
-import { Breadcrumb } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import ProductStickers from '../components/ProductStickers';
-import { Modal } from 'react-bootstrap';
+import ProductStickers from '../components/products/ProductStickers.js';
 
 const ProductPage: React.FC = () => {
     const { id } = useParams();
@@ -72,7 +68,7 @@ const ProductPage: React.FC = () => {
     };
 
     return (
-        <Container id='product-page' className='my-5'>
+        <Container id='product-page' className='my-4 page-wrapper'>
             <Breadcrumb className='ps-2'>
                 <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Hem</Breadcrumb.Item>
                 <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/products" }}>Produkter</Breadcrumb.Item>

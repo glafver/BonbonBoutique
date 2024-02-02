@@ -1,8 +1,8 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { Form, FormControl, ListGroup } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
-import { Product } from '../types/types';
-import { useProducts } from '../hooks/useProducts';
+import { Product } from '../../types/types';
+import { useProducts } from '../../hooks/useProducts';
 import { useNavigate } from 'react-router-dom';
 
 const SearchBar: React.FC = () => {
@@ -17,7 +17,7 @@ const SearchBar: React.FC = () => {
     };
 
     const handleGoToProduct = (product: Product) => {
-        navigate('/products', { state: { productId: product.id } });
+        navigate(`/product/${product.id}`);
         setQuery('');
     };
 

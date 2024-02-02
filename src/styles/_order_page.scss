@@ -1,0 +1,56 @@
+.step-indicator {
+    width: 30px;
+    height: 30px;
+    background-color: $primary-color;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.step-line {
+    border-left: 2px solid $background-color;
+    margin-left: 14px;
+    margin-bottom: 15px;
+}
+
+#order-form {
+    input:focus {
+        border-color: gray;
+        box-shadow: none;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    label {
+        margin-bottom: 0;
+        font-size: 12px;
+    }
+}
+
+#payment-form {
+    .credit-card {
+        background-color: $accent-color;
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .card-details {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card-details .form-group {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .form-check-input {
+        margin-top: 12px;
+    }
+}

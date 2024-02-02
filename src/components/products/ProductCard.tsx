@@ -4,11 +4,10 @@ import { FaBasketShopping } from "react-icons/fa6";
 import { BsHeart, BsFillHeartFill } from "react-icons/bs";
 import { Fade } from "react-awesome-reveal";
 import { toast } from 'react-toastify';
-
-import { Product } from '../types/types';
-import { useCart } from '../hooks/useCart';
-import { useProducts } from '../hooks/useProducts';
-import { useFav } from '../hooks/useFav';
+import { Product } from '../../types/types';
+import { useCart } from '../../hooks/useCart';
+import { useProducts } from '../../hooks/useProducts';
+import { useFav } from '../../hooks/useFav';
 import StarRating from './StarRating';
 import ProductStickers from './ProductStickers';
 
@@ -28,7 +27,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             addToCart(product.id, 1);
             toast(<div>
                 <img src={`https://www.bortakvall.se` + product.images.thumbnail} alt={product.name} width="50" height="50" />
-                <strong style={{ marginLeft: '10px' }}>{product.name}</strong>
+                <strong className='ms-2' >{product.name}</strong>
                 <br /> har lagts till i kundvagnen
             </div>);
         }
@@ -55,6 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         src={`https://www.bortakvall.se` + product.images.thumbnail}
                         alt={product.name}
                         style={{
+                            cursor: 'pointer',
                             filter: !isProductAvailable(product.id)
                                 ? 'opacity(20%)' : ''
                         }}
@@ -71,7 +71,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         onClick={handleShowProductPage}
                         style={{
                             height: '48px',
-                            cursor: 'pointer',
                             fontSize: '14px'
                         }}
                     >

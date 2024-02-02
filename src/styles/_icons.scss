@@ -10,32 +10,6 @@
     cursor: pointer;
 }
 
-#cart-icon {
-    font-size: 25px;
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
-#fav-icon {
-    font-size: 25px;
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
-#cart-badge {
-    background-color: $accent-color !important;
-    position: absolute;
-    top: -14px;
-    right: 0;
-}
-
-#fav-badge {
-    background-color: $accent-color !important;
-    position: absolute;
-    top: -14px;
-    right: 0;
-}
-
 .card-fav-icon {
     position: absolute;
     right: 10px;
@@ -54,4 +28,15 @@
 
 .rating-icon-filled {
     color: $secondary-accent-color;
+}
+
+.icon-btn.close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+
+    &:hover {
+        color: $primary-color;
+    }
 }

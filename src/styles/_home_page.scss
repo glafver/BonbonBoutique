@@ -102,10 +102,6 @@
                 flex-direction: row;
                 scrollbar-width: none;
                 -ms-overflow-style: none;
-
-                // &::-webkit-scrollbar {
-                //     display: none;
-                // }
             }
         }
     }
@@ -150,8 +146,6 @@
                 }
             }
         }
-
-        .subscribe-email-input {}
 
         .btn {
             background-color: $accent-color !important;

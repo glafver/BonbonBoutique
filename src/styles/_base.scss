@@ -1,5 +1,3 @@
-@import './variables';
-
 body {
     font-family: Montserrat;
     color: $text-color !important;
@@ -37,6 +35,11 @@ a {
     }
 }
 
+.form-check-input:checked {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
 .row {
     margin-left: 0;
     margin-right: 0;
@@ -56,4 +59,22 @@ a {
 
 .Toastify__progress-bar {
     background: linear-gradient(45deg, #4D9DE0, #E15554, #E1BC29);
+}
+
+.page-wrapper {
+    min-height: calc(100vh - 101px - 56px - 216px);
+}
+
+.logo {
+    font-family: 'Modak', sans-serif;
+    color: $primary-color;
+}
+
+.logo-lg {
+    font-size: 50px;
+}
+
+.logo-sm {
+    font-size: 34px;
+    line-height: 27px;
 }

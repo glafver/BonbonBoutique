@@ -1,6 +1,6 @@
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import girl_sweets from '../assets/girl_sweets.png';
+import girl_sweets from '../../assets/girl_sweets.png';
 import { Slide } from "react-awesome-reveal";
 
 const HeroSection = () => {

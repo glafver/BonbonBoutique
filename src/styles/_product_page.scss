@@ -1,5 +1,4 @@
 #product-page {
-
     .modal-body {
         background-color: $background-color;
     }
@@ -50,16 +49,5 @@
     .add-to-cart-btn {
         width: max-content;
         color: white !important;
-    }
-}
-
-.product-page.icon-btn.close {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 2;
-
-    &:hover {
-        color: $primary-color;
     }
 }

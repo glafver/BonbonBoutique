@@ -44,4 +44,6 @@ export type OrderDataType = {
     cvc?: string;
     due_date?: string;
     name_on_card?: string;
+    shipping_method: string;
+    payment_method: string;
 };

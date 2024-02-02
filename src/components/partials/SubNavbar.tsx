@@ -3,7 +3,7 @@ import SearchBar from './SearchBar';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-const SubMenu: React.FC = () => {
+const SubNavbar: React.FC = () => {
     const navigate = useNavigate();
     const [expanded, setExpanded] = useState(false);
 
@@ -25,7 +25,7 @@ const SubMenu: React.FC = () => {
                             <Link to="/products" className="nav-link" onClick={() => handleLinkClick('/products')}>Sortiment</Link>
                         </Nav.Item>
                         <Nav.Item className='d-flex align-items-center'>
-                            <img width="30" height="30" src="https://img.icons8.com/parakeet/96/new.png" alt="new" style={{}} className='mx-1' />
+                            <img width="30" height="30" src="https://img.icons8.com/parakeet/96/new.png" alt="new" className='mx-1' />
                             <Link to="/new-in" className="nav-link" onClick={() => handleLinkClick('/new-in')}>New In</Link>
                         </Nav.Item>
                         <Nav.Item>
@@ -41,4 +41,4 @@ const SubMenu: React.FC = () => {
     );
 };
 
-export default SubMenu;
+export default SubNavbar;

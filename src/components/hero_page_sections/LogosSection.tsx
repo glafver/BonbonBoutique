@@ -1,11 +1,11 @@
 import { Container, Image } from 'react-bootstrap';
-import haribo from '../assets/haribo.png';
-import cadbury from '../assets/cadbury.png';
-import mars from '../assets/mars.png';
-import nutella from '../assets/nutella.png';
-import nestle from '../assets/nestle.png';
-import kinder from '../assets/kinder.png';
-import kitkat from '../assets/kitkat.png';
+import haribo from '../../assets/haribo.png';
+import cadbury from '../../assets/cadbury.png';
+import mars from '../../assets/mars.png';
+import nutella from '../../assets/nutella.png';
+import nestle from '../../assets/nestle.png';
+import kinder from '../../assets/kinder.png';
+import kitkat from '../../assets/kitkat.png';
 
 const LogosSection = () => {
     return (

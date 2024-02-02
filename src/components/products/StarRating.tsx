@@ -9,7 +9,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
     const finalRating = rating || randomRating;
 
     return (
-        <div style={{ display: 'flex' }} >
+        <div className='d-flex' >
             {Array.from({ length: 5 }, (_, index) => (
                 index < finalRating ? <FaStar key={index} className='rating-icon-filled rating-icon' /> : <FaStar key={index} className='rating-icon' />
             ))}

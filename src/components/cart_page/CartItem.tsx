@@ -1,9 +1,9 @@
 import React from 'react';
 import { BsTrash } from "react-icons/bs";
 import { Col } from 'react-bootstrap';
-import { Product } from '../types/types';
-import { useCart } from '../hooks/useCart';
-import { useProducts } from '../hooks/useProducts';
+import { Product } from '../../types/types';
+import { useCart } from '../../hooks/useCart';
+import { useProducts } from '../../hooks/useProducts';
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 

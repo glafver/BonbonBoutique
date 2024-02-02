@@ -1,14 +1,11 @@
 import React from 'react';
 import { AttentionSeeker, Fade, Slide } from 'react-awesome-reveal';
-import { Button, Col, Container, Image, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-
+import { Button, Col, Container, Image, Row, Breadcrumb } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
 import boy_happy from '../assets/boy_happy.png';
-import ProductCard from '../components/ProductCard';
+import ProductCard from '../components/products/ProductCard';
 import { useFav } from '../hooks/useFav';
 import { Product } from '../types/types';
-import { Breadcrumb } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 const FavPage: React.FC = () => {
     const { favItems } = useFav();
@@ -16,7 +13,7 @@ const FavPage: React.FC = () => {
 
     return (
         <Fade duration={500} triggerOnce>
-            <Container id='fav-page' className='my-5 rounded'>
+            <Container id='fav-page' className='my-4 page-wrapper'>
                 <Breadcrumb className='ps-2'>
                     <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Hem</Breadcrumb.Item>
                     <Breadcrumb.Item active>Dina favoritprodukter</Breadcrumb.Item>

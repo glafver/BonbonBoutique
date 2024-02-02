@@ -1,15 +1,14 @@
 import { Container } from 'react-bootstrap';
 import { Fade, Slide } from "react-awesome-reveal";
-
-import BenefitsSection from '../components/BenefitsSection';
-import HeroSection from '../components/HeroSection';
-import LogosSection from '../components/LogosSection';
-import NewIn from '../components/NewInSection';
-import SubscribeSection from '../components/SubscribeSection';
+import BenefitsSection from '../components/hero_page_sections/BenefitsSection';
+import HeroSection from '../components/hero_page_sections/HeroSection';
+import LogosSection from '../components/hero_page_sections/LogosSection';
+import NewIn from '../components/hero_page_sections/NewInSection';
+import SubscribeSection from '../components/hero_page_sections/SubscribeSection';
 
 const HomePage: React.FC = () => {
     return (
-        <Container id='home-page' >
+        <Container id='home-page page-wrapper' >
             <Fade duration={1000} triggerOnce> <HeroSection /></Fade>
 
             <Slide direction='right' triggerOnce><BenefitsSection /></Slide>

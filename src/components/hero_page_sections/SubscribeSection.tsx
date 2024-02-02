@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image, Form, Button } from 'react-bootstrap';
-import subscribeImage from '../assets/subscribe-image.png';
+import subscribeImage from '../../assets/subscribe-image.png';
 import { toast } from 'react-toastify';
 import { Slide } from "react-awesome-reveal";
 

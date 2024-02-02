@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Col, Button, Container } from 'react-bootstrap';
-import { useProducts } from '../hooks/useProducts';
+import { useProducts } from '../../hooks/useProducts';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import ProductCard from './ProductCard';
+import ProductCard from '../products/ProductCard';
 
 const NewIn: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
