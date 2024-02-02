@@ -9,17 +9,3 @@
 
 
 }
-
-.gdpr-modal {
-    .modal-dialog {
-        @media (min-width: map-get($breakpoints, md)) {
-            max-width: 50vw;
-        }
-    }
-
-    .modal-dialog-centered {
-        @media (min-width: map-get($breakpoints, md)) {
-            align-items: end !important;
-        }
-    }
-}
