@@ -50,14 +50,14 @@ const Footer = () => {
                         </p>
                     </Col>
                 </Row>
-                <Modal show={show} centered className='gdpr-modal'>
+                {/* <Modal show={show} centered className='gdpr-modal'>
                     <Modal.Body className='text-center py-4'>
                         <p className='py-3'>Vi använder cookies för att förbättra din upplevelse. Genom att fortsätta besöka denna webbplats godkänner du vår användning av cookies.</p>
                         <Button variant="secondary" onClick={handleClose}>
                             Jag godkänner
                         </Button>
                     </Modal.Body>
-                </Modal>
+                </Modal> */}
             </Container>
         </footer>
     );
