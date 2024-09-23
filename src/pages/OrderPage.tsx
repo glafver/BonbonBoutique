@@ -145,12 +145,12 @@ const OrderPage: React.FC = () => {
                                 </Bounce>
                                 <div className='fw-bold fs-3 mt-3'>Tack för att du handlar hos</div>
                                 <div className='logo p-3 logo-lg d-none d-md-block'>
-                                    <span> BonbonBoutique</span>
+                                    <span> Sweet Shop</span>
                                 </div>
                                 <div className='logo p-3 logo-sm d-md-none'>
-                                    <span >Bonbon</span>
+                                    <span >Sweet</span>
                                     <br />
-                                    <span>Boutique</span>
+                                    <span>Shop</span>
                                 </div>
                                 <div className='mb-3 fs-3'>Ditt ordernummer är: <b className='ms-3'>#{result.data.id}</b></div>
                                 <div >Du kommer att få orderinformation via e-post</div>

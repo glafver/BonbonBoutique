@@ -23,13 +23,13 @@ const NavbarComponent: React.FC = () => {
                         className='d-flex'
                         role='button'>
                         <div className="logo logo-lg d-none d-lg-flex">
-                            <span >BonbonBoutique</span>
+                            <span >Sweet Shop</span>
                         </div>
 
                         <div className='logo logo-sm d-block d-lg-none'>
-                            <span>Bonbon</span>
+                            <span>Sweet </span>
                             <br />
-                            <span>Boutique</span>
+                            <span>Shop</span>
                         </div>
                     </Navbar.Brand>
                     <div className='d-flex align-items-center'>

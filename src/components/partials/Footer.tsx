@@ -11,14 +11,14 @@ const Footer = () => {
                     <Col md={3}>
                         <div className='d-flex' role='button'>
                             <div className='logo d-block d-md-none logo-sm'>
-                                <span >Bonbon</span>
+                                <span >Sweet</span>
                                 <br />
-                                <span>Boutique</span>
+                                <span>Shop</span>
                             </div>
                             <div className='logo d-none d-md-block logo-lg' style={{ lineHeight: '57px' }}>
-                                <span >Bonbon</span>
+                                <span >Sweet</span>
                                 <br />
-                                <span>Boutique</span>
+                                <span>Shop</span>
                             </div>
                         </div>
                     </Col>
